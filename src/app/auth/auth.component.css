@@ -40,3 +40,15 @@
 #auth.sign-up button[mat-fab] {
     left: 50px;
 }
+
+.login {
+    display: flex;
+    flex-direction: column;
+    width: 50vh;
+}
+
+.signup {
+    display: flex;
+    flex-direction: column;
+    width: 50vh;
+}
