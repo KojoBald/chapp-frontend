@@ -1,3 +1,15 @@
-<p>
-  auth works!
-</p>
+<div id="auth" [class]="whichForm">
+  <section id="login">
+    <h2>login</h2>
+    <button mat-raised-button (click)="whichForm = 'toggle'">go to toggle</button>
+  </section>
+  <section id="auth-toggle">
+    <h2>toggle</h2>
+    <button mat-raised-button color="primary" (click)="whichForm = 'login'">log in</button> <br> <br>
+    <button mat-raised-button color="primary" (click)="whichForm = 'sign-up'">sign up</button>
+  </section>
+  <section id="sign-up">
+    <h2>sign up</h2>
+    <button mat-raised-button  (click)="whichForm = 'toggle'">go to toggle</button>
+  </section>
+</div>
