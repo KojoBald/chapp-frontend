@@ -5,5 +5,39 @@
   <mat-sidenav-content id="content">
     <mat-toolbar color="primary"><img src='../../assets/fake_logo.png' height=30vw>  Chapp</mat-toolbar>
     <router-outlet></router-outlet>
+
+    <!--Overall Message Container-->
+    <div id='messageContainer'>
+
+      <!--Individual Message Container-->
+      <div class='messageBox'>
+        <div class='messageImgWrapper'>
+          
+          <!--Profile Photo-->
+          <img src='../../assets/testImg.jpeg' style='
+          width:80px;
+          height:80px;
+          border: 0px solid black;
+          border-radius:100%;
+          object-fit:cover;'></div>
+          <div class='messageTextBox'>
+
+        <!--Username-->
+        <h2>Username</h2>
+
+        <!--Message-->
+        Text Text Text Text Text Text Text Text Text Text Text Text 
+        <br> Text Text Text Text
+
+        <!--Edit Message Button-->
+        <a href='#' class='editText'>Edit</a>
+      </div>
+      <div class='messageDelete'>
+
+        <!--Delete Image-->
+        <img src='../../assets/trash.png' width='50px'>
+      </div> 
+      </div>
+    </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
