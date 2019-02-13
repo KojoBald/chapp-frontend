@@ -1,21 +1,63 @@
 <div id="auth" [class]="whichForm">
+
   <section id="login">
     <h2>Login</h2>
     <button mat-fab color="accent" (click)="whichForm = 'toggle'">
       <mat-icon>keyboard_arrow_right</mat-icon>
-    </button> <br> <br>
-    <button mat-raised-button (click)="router.navigate([''])">Login</button>
+    </button> 
+    <form class="login">
+        <mat-form-field>
+          <input matInput placeholder="Username">
+        </mat-form-field>
+      
+        <mat-form-field>
+          <input matInput placeholder="Password">
+        </mat-form-field>
+      
+        <button mat-raised-button>Log In</button>
+    </form>
   </section>
+
   <section id="auth-toggle">
-    <h2><img src='../../assets/fake_logo.png' height=70vw>Choose Option</h2>
-    <button mat-raised-button color="primary" (click)="whichForm = 'login'">Login</button> <br> <br>
+    <h2>Toggle</h2>
+    <button mat-raised-button color="primary" (click)="whichForm = 'login'">Log In</button> <br> <br>
     <button mat-raised-button color="primary" (click)="whichForm = 'sign-up'">Sign Up</button>
   </section>
+
   <section id="sign-up">
-    <h2>Sign Up</h2>
+    <h2>Sign-up</h2>
     <button mat-fab color="accent" (click)="whichForm = 'toggle'">
       <mat-icon>keyboard_arrow_left</mat-icon>
     </button> <br> <br>
-    <button mat-raised-button>Sign Up</button>
+
+      <form class="signup">
+        <mat-form-field>
+          <input matInput placeholder="First Name">
+        </mat-form-field>
+      
+        <mat-form-field>
+          <input matInput placeholder="Last Name">
+        </mat-form-field>
+      
+        <mat-form-field>
+          <input matInput placeholder="Username">
+        </mat-form-field>
+      
+        <mat-form-field>
+          <input matInput placeholder="Email">
+        </mat-form-field>
+      
+        <mat-form-field>
+          <input matInput placeholder="Password">
+        </mat-form-field>
+      
+        <mat-form-field>
+          <input matInput placeholder="Confirm Password">
+        </mat-form-field>
+      
+        <button mat-raised-button>Sign Up</button>
+      </form>
+
   </section>
+
 </div>
