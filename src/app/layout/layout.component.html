@@ -1,9 +1,14 @@
 <mat-sidenav-container id="app-container">
-  <mat-sidenav #sidenav mode="side" opened="true" id="sidenav">
+  <mat-sidenav #sidenav [mode]="(screen === 'mobile') ? 'over' : 'side'" [opened]="screen === 'web'" id="sidenav">
   </mat-sidenav>
 
   <mat-sidenav-content id="content">
-    <mat-toolbar color="primary">Chapp</mat-toolbar>
+    <mat-toolbar color="primary">
+      <button mat-icon-button *ngIf="screen !== 'web'" (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <h2>[channel name]</h2>
+    </mat-toolbar>
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
