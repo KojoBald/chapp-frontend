@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Hammersmith+One|Yantramanav');
+@import url('https://fonts.googleapis.com/css?family=Chakra+Petch|Hammersmith+One|Yantramanav');
 body {
     margin: 0;
     height: 100vh;
@@ -9,9 +9,19 @@ body {
 h1{
     font-style: bold;
     color:white;
+    font-family: 'Hammersmith One', sans-serif;
 }
 h2{
-    font-family: 'Hammersmith One', sans-serif;
+    font-family: 'Chakra Petch', sans-serif;
     color:white;
     font-weight: normal;
 }
+h3{
+    font-family: 'Hammersmith One', sans-serif;
+    color:white;
+    font-weight: normal;
+
+}
+/* #sidenav .mat-drawer-inner-container{
+    overflow:hidden;
+} */
