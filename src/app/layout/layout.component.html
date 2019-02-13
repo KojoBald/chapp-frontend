@@ -1,3 +1,9 @@
-<p>
-  layout works!
-</p>
+<mat-sidenav-container id="app-container">
+  <mat-sidenav #sidenav mode="side" opened="true" id="sidenav">
+  </mat-sidenav>
+
+  <mat-sidenav-content id="content">
+    <mat-toolbar color="primary">Chapp</mat-toolbar>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
