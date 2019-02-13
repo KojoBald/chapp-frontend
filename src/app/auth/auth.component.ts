@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-auth',
@@ -7,4 +8,6 @@ import { Component } from '@angular/core';
 })
 export class AuthComponent {
   whichForm: string = 'toggle'
+
+  constructor(private router: Router) { }
 }

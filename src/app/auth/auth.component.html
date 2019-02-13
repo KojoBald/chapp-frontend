@@ -1,7 +1,10 @@
 <div id="auth" [class]="whichForm">
   <section id="login">
     <h2>login</h2>
-    <button mat-raised-button (click)="whichForm = 'toggle'">go to toggle</button>
+    <button mat-fab color="accent" (click)="whichForm = 'toggle'">
+      <mat-icon>keyboard_arrow_right</mat-icon>
+    </button> <br> <br>
+    <button mat-raised-button (click)="router.navigate([''])">login</button>
   </section>
   <section id="auth-toggle">
     <h2>toggle</h2>
@@ -10,6 +13,9 @@
   </section>
   <section id="sign-up">
     <h2>sign up</h2>
-    <button mat-raised-button  (click)="whichForm = 'toggle'">go to toggle</button>
+    <button mat-fab color="accent" (click)="whichForm = 'toggle'">
+      <mat-icon>keyboard_arrow_left</mat-icon>
+    </button> <br> <br>
+    <button mat-raised-button>sign up</button>
   </section>
 </div>
