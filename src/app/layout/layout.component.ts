@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ScreenSizeService } from '../services/screen-size.service'
+import { ScreenSizeService, ScreenSize } from '../services/screen-size.service'
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -9,12 +9,13 @@ import { Subscription } from 'rxjs';
 })
 export class LayoutComponent implements OnInit, OnDestroy {
   private _screenSizeSubscription: Subscription;
+  screen: ScreenSize = ScreenSize.Web;
 
   constructor(private _screenSize: ScreenSizeService) { }
 
   ngOnInit() {
     this._screenSizeSubscription = this._screenSize.subscribe(screen => {
-      console.log('size changed', screen);
+      this.screen = screen;
     })
   }
 
