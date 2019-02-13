@@ -1,7 +1,17 @@
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import url('https://fonts.googleapis.com/css?family=Hammersmith+One');
 body {
     margin: 0;
     height: 100vh;
     width: 100vw;
     overflow: hidden;
+    background-color: rgb(65, 65, 65);
+}
+h1{
+    font-style: bold;
+    color:white;
+}
+h2{
+    font-family: 'Hammersmith One', sans-serif;
+    color:white;
+    font-weight: normal;
 }

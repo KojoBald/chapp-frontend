@@ -1,21 +1,21 @@
 <div id="auth" [class]="whichForm">
   <section id="login">
-    <h2>login</h2>
+    <h2>Login</h2>
     <button mat-fab color="accent" (click)="whichForm = 'toggle'">
       <mat-icon>keyboard_arrow_right</mat-icon>
     </button> <br> <br>
-    <button mat-raised-button (click)="router.navigate([''])">login</button>
+    <button mat-raised-button (click)="router.navigate([''])">Login</button>
   </section>
   <section id="auth-toggle">
-    <h2>toggle</h2>
-    <button mat-raised-button color="primary" (click)="whichForm = 'login'">log in</button> <br> <br>
-    <button mat-raised-button color="primary" (click)="whichForm = 'sign-up'">sign up</button>
+    <h2><img src='../../assets/fake_logo.png' height=70vw>Choose Option</h2>
+    <button mat-raised-button color="primary" (click)="whichForm = 'login'">Login</button> <br> <br>
+    <button mat-raised-button color="primary" (click)="whichForm = 'sign-up'">Sign Up</button>
   </section>
   <section id="sign-up">
-    <h2>sign up</h2>
+    <h2>Sign Up</h2>
     <button mat-fab color="accent" (click)="whichForm = 'toggle'">
       <mat-icon>keyboard_arrow_left</mat-icon>
     </button> <br> <br>
-    <button mat-raised-button>sign up</button>
+    <button mat-raised-button>Sign Up</button>
   </section>
 </div>

@@ -5,9 +5,11 @@
 
 #sidenav {
     width: 300px;
+    background-color: rgb(46, 46, 46);
 }
 
 #content {
     display: flex;
     flex-direction: column;
+    background-color: rgb(65, 65, 65);
 }
