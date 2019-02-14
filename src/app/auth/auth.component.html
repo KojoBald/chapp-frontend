@@ -14,12 +14,16 @@
           <input matInput placeholder="Password">
         </mat-form-field>
       
-        <button mat-raised-button>Log In</button>
+        <button mat-raised-button routerLink=''>Log In</button>
     </form>
   </section>
 
   <section id="auth-toggle">
-    <h2>Toggle</h2>
+    <h1 style='font-size:40px;'>
+      <img src='../../assets/fake_logo.png' height=35vw>
+      Chapp
+    </h1>
+    <h2 style='margin-top: 0px;'>Toggle</h2>
     <button mat-raised-button color="primary" (click)="whichForm = 'login'">Log In</button> <br> <br>
     <button mat-raised-button color="primary" (click)="whichForm = 'sign-up'">Sign Up</button>
   </section>

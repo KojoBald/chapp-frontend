@@ -8,13 +8,15 @@ import { AppComponent } from './app.component';
 import { AuthComponent } from './auth/auth.component';
 import { LayoutComponent } from './layout/layout.component';
 import { DisplayMessageComponent } from './display-message/display-message.component';
+import { MessageBoxComponent } from './message-box/message-box.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AuthComponent,
     LayoutComponent,
-    DisplayMessageComponent
+    DisplayMessageComponent,
+    MessageBoxComponent
   ],
   imports: [
     BrowserModule,
