@@ -4,14 +4,14 @@
     <h2>Login</h2>
     <button mat-fab color="accent" (click)="whichForm = 'toggle'">
       <mat-icon>keyboard_arrow_right</mat-icon>
-    </button> 
+    </button>
     <form class="login">
         <mat-form-field>
-          <input matInput placeholder="Username">
+          <input matInput placeholder="Username" required>
         </mat-form-field>
       
         <mat-form-field>
-          <input matInput placeholder="Password">
+          <input matInput placeholder="Password" type="password" required>
         </mat-form-field>
       
         <button mat-raised-button>Log In</button>
@@ -28,31 +28,31 @@
     <h2>Sign-up</h2>
     <button mat-fab color="accent" (click)="whichForm = 'toggle'">
       <mat-icon>keyboard_arrow_left</mat-icon>
-    </button> <br> <br>
+    </button> <br> <br> 
 
       <form class="signup">
         <mat-form-field>
-          <input matInput placeholder="First Name">
+          <input matInput placeholder="First Name" required>
         </mat-form-field>
       
         <mat-form-field>
-          <input matInput placeholder="Last Name">
+          <input matInput placeholder="Last Name" required>
         </mat-form-field>
       
         <mat-form-field>
-          <input matInput placeholder="Username">
+          <input matInput placeholder="Username" required>
         </mat-form-field>
       
         <mat-form-field>
-          <input matInput placeholder="Email">
+          <input matInput placeholder="Email" required>
         </mat-form-field>
       
         <mat-form-field>
-          <input matInput placeholder="Password">
+          <input matInput placeholder="Password" type="password" required>
         </mat-form-field>
       
         <mat-form-field>
-          <input matInput placeholder="Confirm Password">
+          <input matInput placeholder="Confirm Password" type="password" required>
         </mat-form-field>
       
         <button mat-raised-button>Sign Up</button>
