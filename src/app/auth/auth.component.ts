@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class AuthComponent 
 {
-  whichForm: string = 'toggle';
+  whichForm: string = 'toggle'; 
 
   constructor(private router: Router) {}
 
