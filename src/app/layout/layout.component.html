@@ -1,14 +1,94 @@
 <mat-sidenav-container id="app-container">
   <mat-sidenav #sidenav [mode]="(screen === 'mobile') ? 'over' : 'side'" [opened]="screen === 'web'" id="sidenav">
-  </mat-sidenav>
+
+    <div class='centerNav'>
+      <h1>
+      <img src='../../assets/fake_logo.png' height=50vw>
+      Chapp
+    </h1>
+
+    <!--Global Button-->
+    <button class='navButton'>Global</button>
+  </div>
+
+  <!--Channels list-->
+  <h2>Channels</h2>
+  <hr/>
+  <ul>
+      <li>Option 1</li>
+      <li>Option 2</li>
+      <li>Option 3</li>
+  </ul>
+
+  <br><div class='centerNav'>
+
+  <!--+ Channel Button-->
+  <button class='navButton'>+ Channel</button>
+  </div>
+
+  <!--Direct Messages list-->
+  <h2>Direct Messages</h2>
+  <hr/>
+  <ul>
+      <li>Option 1</li>
+      <li>Option 2</li>
+      <li>Option 3</li>
+  </ul>
+
+  <!--Admin Controls-->
+  <h2>Admin Controls</h2>
+  <hr/>
+  <ul>
+      <li>Manage Users</li>
+      <li>Update Channel</li>
+      <li>Delete Channel</li>
+  </ul>
+
+  </mat-sidenav><!--End Of SideNav-->
 
   <mat-sidenav-content id="content">
     <mat-toolbar color="primary">
       <button mat-icon-button *ngIf="screen !== 'web'" (click)="sidenav.toggle()">
         <mat-icon>menu</mat-icon>
       </button>
+
+      <!--Channel Name-->
       <h2>[channel name]</h2>
     </mat-toolbar>
     <router-outlet></router-outlet>
+
+    <!--Overall Message Container-->
+    <div id='messageContainer'>
+
+      <!--Individual Message Container-->
+      <div class='messageBox'>
+        <div class='messageImgWrapper'>
+          
+          <!--Profile Photo-->
+          <img src='../../assets/testImg.jpeg' style='
+          width:80px;
+          height:80px;
+          border: 0px solid black;
+          border-radius:100%;
+          object-fit:cover;'></div>
+          <div class='messageTextBox'>
+
+        <!--Username-->
+        <h3>Username</h3>
+
+        <!--Message-->
+        Text Text Text Text Text Text Text Text Text Text Text Text 
+        <br> Text Text Text Text
+
+        <!--Edit Message Button-->
+        <a href='#' class='editText'>Edit</a>
+      </div>
+      <div class='messageDelete'>
+
+        <!--Delete Image-->
+        <img src='../../assets/trash.png' width='50px'>
+      </div> 
+      </div>
+    </div>
   </mat-sidenav-content>
 </mat-sidenav-container>

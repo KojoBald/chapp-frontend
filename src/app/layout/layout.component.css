@@ -4,10 +4,78 @@
 }
 
 #sidenav {
-    width: 300px;
+    width: 280px;
+    background-color: rgb(46, 46, 46);
+    padding-left: 10px;
+    padding-right:10px;
 }
+
 
 #content {
     display: flex;
     flex-direction: column;
+    background-color: rgb(65, 65, 65);
+}
+
+/* Message Related CSS */
+#messageContainer{
+    height:auto;
+    width:100%;
+    display: flex;
+    flex-direction: column;
+}
+.messageBox{
+    width:86%;
+    padding: 2%;
+    margin-left:5%;
+    margin-right: 5%;
+    float:right;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    border-bottom: rgb(46, 46, 46) 2px solid;
+}
+.messageImgWrapper{
+    height:100%;
+    float:left;
+    width:80px;
+    margin-top: 20px;
+    margin-right: 10px;
+}
+.messageTextBox{
+    height:100%;
+    width:65%;
+    float:left;
+    font-family: 'Yantramanav', sans-serif;
+}
+.messageDelete{
+    height:50px;
+    margin-top:30px;
+    float:right;
+}
+.editText{
+    font-size: 12px;
+    color:grey;
+    float:right;
+}
+a.editText:link { color: grey; text-decoration:none; font-weight:normal; }
+a.editText:visited { color: grey; text-decoration:none; font-weight:normal; }
+a.editText:hover { color: #FFF; text-decoration:underline; font-weight:normal; }
+a.editText:active { color: grey; text-decoration:none; font-weight:normal; }
+
+/* SideNav CSS */
+.centerNav{
+    text-align:center;
+}
+.navButton{
+    background-color: rgb(65, 65, 65);
+    padding: 5%;
+    color:white;
+    font-size: 30px;
+    font-family: 'Chakra Petch', sans-serif;
+}
+li{
+    color:white;
+    font-family: 'Yantramanav', sans-serif;
+    border-bottom: 2px solid rgb(65, 65, 65);
+    margin: 3px;
 }
