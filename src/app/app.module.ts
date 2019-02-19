@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http'; 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -12,6 +12,9 @@ import { LayoutComponent } from './components/layout/layout.component';
 import { MessageBoxComponent } from './components/message-box/message-box.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ChannelComponent } from './components/channel/channel.component';
+import { CreateChannelComponent } from './components/modals/create-channel/create-channel.component';
+import { SidenavComponent } from './components/sidenav/sidenav.component';
+import { Stepper } from './components/auth/stepper/stepper.component'
 
 @NgModule({
   declarations: [
@@ -20,7 +23,10 @@ import { ChannelComponent } from './components/channel/channel.component';
     LayoutComponent,
     MessageBoxComponent,
     ProfileComponent,
-    ChannelComponent
+    ChannelComponent,
+    CreateChannelComponent,
+    SidenavComponent,
+    Stepper
   ],
   imports: [
     BrowserModule,
@@ -28,9 +34,11 @@ import { ChannelComponent } from './components/channel/channel.component';
     BrowserAnimationsModule,
     MaterialModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [CreateChannelComponent]
 })
 export class AppModule { }

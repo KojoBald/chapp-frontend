@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class LayoutComponent implements OnInit, OnDestroy {
   private _screenSizeSubscription: Subscription;
   screen: ScreenSize = ScreenSize.Web;
+  
   routeProfile(){
     this.router.navigateByUrl('/profile');
   };

@@ -6,7 +6,12 @@ import {
     MatButtonModule,
     MatIconModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatDialogModule,
+    MatProgressSpinnerModule,
+    MatStepperModule,
+    MatChipsModule,
+    MatSnackBarModule
 
  } from '@angular/material';
 
@@ -17,7 +22,12 @@ import {
         MatButtonModule,
         MatIconModule,
         MatFormFieldModule,
-        MatInputModule
+        MatInputModule,
+        MatDialogModule,
+        MatProgressSpinnerModule,
+        MatStepperModule,
+        MatChipsModule,
+        MatSnackBarModule
     ]
 })
 export class MaterialModule { }
