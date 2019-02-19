@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ScreenSizeService, ScreenSize } from '../services/screen-size.service'
+import { ScreenSizeService, ScreenSize } from '../../services/screen-size.service'
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 
