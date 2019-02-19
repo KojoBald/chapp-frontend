@@ -1,7 +1,7 @@
 #auth {
     display: flex;
     flex-direction: row;
-    transition: transform 350ms ease;
+    transition: transform 425ms ease;
 }
 
 #auth.toggle {

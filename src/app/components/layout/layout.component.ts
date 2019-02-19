@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ScreenSizeService, ScreenSize } from '../services/screen-size.service'
+import { ScreenSizeService, ScreenSize } from '../../services/screen-size.service'
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 
@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class LayoutComponent implements OnInit, OnDestroy {
   private _screenSizeSubscription: Subscription;
   screen: ScreenSize = ScreenSize.Web;
+  
   routeProfile(){
     this.router.navigateByUrl('/profile/:id');
   };

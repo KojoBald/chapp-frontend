@@ -1,0 +1,27 @@
+<mat-sidenav-container id="app-container">
+  <mat-sidenav #sidenav [mode]="(screen === 'mobile') ? 'over' : 'side'" [opened]="screen === 'web'" id="sidenav">
+    <app-sidenav></app-sidenav>
+  </mat-sidenav>
+
+  <mat-sidenav-content id="content">
+
+  <!--Top Nav-->
+    <mat-toolbar color="primary">
+      <button mat-icon-button *ngIf="screen !== 'web'" (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+
+      <!--Channel Name-->
+      <h2 style='color:black;'>[channel name]</h2>
+      <span class="fill-remaining-space"></span>
+
+      <!--Profile Icon-->
+      <mat-icon (click)="routeProfile()">account_circle</mat-icon>
+    </mat-toolbar>
+
+    <!--Router-->
+    <div id='routerBox'>
+    <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

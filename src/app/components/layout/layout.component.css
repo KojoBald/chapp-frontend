@@ -1,0 +1,28 @@
+#app-container {
+    height: 100vh;
+    width: 100vw;
+}
+
+#sidenav {
+    width: 280px;
+    background-color: rgb(46, 46, 46);
+    padding-left: 10px;
+    padding-right:10px;
+}
+
+
+#content {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(65, 65, 65);
+}
+
+/* SideNav CSS */
+
+.fill-remaining-space {
+    flex: 1 1 auto;
+}
+#routerBox{
+    height:86.3vh;
+    width:100%;
+}
