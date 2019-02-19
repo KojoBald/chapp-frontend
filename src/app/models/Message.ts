@@ -1,4 +1,4 @@
-export class Direct
+export class Message
 {
     text: string;
 }
