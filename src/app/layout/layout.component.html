@@ -8,7 +8,7 @@
     </h1>
 
     <!--Global Button-->
-    <button class='navButton'>Global</button>
+    <button class='navButton' (click)="routeGlobal()">Global</button>
   </div>
 
   <!--Channels list-->
@@ -23,7 +23,7 @@
   <br><div class='centerNav'>
 
   <!--+ Channel Button-->
-  <button class='navButton'>+ Channel</button>
+  <button class='navButton' (click)='routeCreateChannel()'>+ Channel</button>
   </div>
 
   <!--Direct Messages list-->
@@ -47,6 +47,8 @@
   </mat-sidenav><!--End Of SideNav-->
 
   <mat-sidenav-content id="content">
+
+  <!--Top Nav-->
     <mat-toolbar color="primary">
       <button mat-icon-button *ngIf="screen !== 'web'" (click)="sidenav.toggle()">
         <mat-icon>menu</mat-icon>
@@ -57,31 +59,12 @@
       <span class="fill-remaining-space"></span>
 
       <!--Profile Icon-->
-      <mat-icon>account_circle</mat-icon>
+      <mat-icon (click)="routeProfile()">account_circle</mat-icon>
     </mat-toolbar>
+
+    <!--Router-->
+    <div id='routerBox'>
     <router-outlet></router-outlet>
-
-    <!--Overall Message Container-->
-    <div id='messageContainer'>
-
-    <!--Message Boxes-->
-    <app-message-box></app-message-box>
-    <app-message-box></app-message-box>
-    <app-message-box></app-message-box>
-    <app-message-box></app-message-box>
-    <app-message-box></app-message-box>
-    <app-message-box></app-message-box>
-
-    </div>
-    
-    <!--make message box-->
-    <div class='sendMessageBox'>
-      <input type='text' style='
-      font-size:20px;
-      flex: 1 1 auto;
-      background-color:rgb(65, 65, 65);
-      border: 1px solid yellow;'>
-      <button class='sendButton'>Send</button>
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
