@@ -127,4 +127,16 @@ export class ApiService
     .pipe(catchError(this.handleError('updateChannelFetch')),tap(user => {return user}))
   }
 
+  deleteDM(id: number): any
+  {
+    return this.http.delete(`${this.URL}/user/message/:id`, httpOptions)
+    .pipe(catchError(this.handleError('DeleteChannelFetch')),tap(user => {return user}))
+  }
+
+  getDMs(id: number): any
+  {
+    return this.http.get<Direct>(`${this.URL}/user/message/all/:userId`, httpOptions)
+    .pipe(catchError(this.handleError('getChannelUserFetch')),tap(user => {return user}))
+  }
+
 }
