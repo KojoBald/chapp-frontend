@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Router } from '@angular/router';
+import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-auth',
@@ -10,6 +10,12 @@ export class AuthComponent
 {
   whichForm: string = 'toggle'; 
 
-  constructor(private router: Router) {}
+  constructor(private ApiService: ApiService) {} 
 
+  signUp(user) : void
+  {
+    event.preventDefault();
+    this.ApiService.signUp(user)
+    .subscribe(newUser => newUser);
+  }
 }

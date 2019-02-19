@@ -4,8 +4,9 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable, of} from "rxjs";
 import {catchError, map, tap} from "rxjs/operators";
 
-import { User } from '../models/User';
+import { User } from '../models/user';
 import { Channel } from '../models/channel';
+import { Direct } from '../models/directMessage';
 
 const httpOptions =
 {
@@ -37,13 +38,13 @@ export class ApiService
    ***************************************************************/
   signUp(user: User): any
   {
-    return this.http.post<User[]>(`${this.URL}/user/Create`, user, httpOptions)
+    return this.http.post<User[]>(`${this.URL}/user/`, user, httpOptions)
     .pipe(catchError(this.handleError("signupFetch")),tap(user => {return user}))
   }
 
   login(user: User): any
   {
-    return this.http.put(`${this.URL}/user/`, user, httpOptions)
+    return this.http.put(`${this.URL}/user/login`, user, httpOptions)
     .pipe(catchError(this.handleError('Fetched')),tap(user => {return user}))
   }
 
@@ -109,4 +110,21 @@ export class ApiService
     return this.http.put(`${this.URL}/channel/:id/invite`, user, httpOptions)
     .pipe(catchError(this.handleError('inviteChannelFetch')),tap(user => {return user}))
   }
+
+  /**************************************************************
+   * UserMessages
+  ***************************************************************/
+
+ sendDirectMessage(user: Direct): any
+ {
+   return this.http.post<Direct>(`${this.URL}/user/message/`, user, httpOptions)
+   .pipe(catchError(this.handleError('inviteChannelFetch')),tap(user => {return user}))
+ }
+
+ updateMessage(user: Direct): any
+  {
+    return this.http.put(`${this.URL}/user/message/:id`, user, httpOptions)
+    .pipe(catchError(this.handleError('updateChannelFetch')),tap(user => {return user}))
+  }
+
 }
