@@ -12,6 +12,7 @@ import { LayoutComponent } from './components/layout/layout.component';
 import { MessageBoxComponent } from './components/message-box/message-box.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ChannelComponent } from './components/channel/channel.component';
+import { SidenavComponent } from './components/sidenav/sidenav.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { ChannelComponent } from './components/channel/channel.component';
     MessageBoxComponent,
     ProfileComponent,
     ChannelComponent
+    SidenavComponent
   ],
   imports: [
     BrowserModule,
