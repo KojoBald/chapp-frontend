@@ -1,19 +1,23 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ScreenSize } from 'src/app/services/screen-size.service';
+import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material'
+import { CreateChannelComponent } from '../modals/create-channel/create-channel.component'
 
 @Component({
   selector: 'app-sidenav',
   templateUrl: './sidenav.component.html',
   styleUrls: ['./sidenav.component.css']
 })
-export class SidenavComponent implements OnInit {
-  @Input() screen: ScreenSize;
+export class SidenavComponent {
 
-  constructor() { 
-    
-  }
+  constructor(private dialog: MatDialog) { }
 
-  ngOnInit() {
-    console.log('onInit sidenav', this.screen);
+  openCreateChannelDialog() {
+    let dialogRef = this.dialog.open(CreateChannelComponent, {
+      width: '50vw'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('closed', result);
+    })
   }
 }
