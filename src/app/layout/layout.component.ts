@@ -13,13 +13,13 @@ export class LayoutComponent implements OnInit, OnDestroy {
   private _screenSizeSubscription: Subscription;
   screen: ScreenSize = ScreenSize.Web;
   routeProfile(){
-    this.router.navigateByUrl('/profile');
+    this.router.navigateByUrl('/profile/:id');
   };
   routeGlobal(){
-    this.router.navigateByUrl('/channel');
+    this.router.navigateByUrl('/channel/:id');
   };
-  routeCreateChannel(){
-    this.router.navigateByUrl('/createchannel');
+  routeDm(){
+    this.router.navigateByUrl('/dm/:id');
   };
 
   constructor(private _screenSize: ScreenSizeService, private router: Router) {}
@@ -28,8 +28,7 @@ export class LayoutComponent implements OnInit, OnDestroy {
     this._screenSizeSubscription = this._screenSize.subscribe(screen => {
       this.screen = screen;
     });
-    this.router.navigateByUrl('/channel');
-    // this.router.navigate(['/channel']);
+    this.router.navigateByUrl('/channel/:id');
   }
 
   ngOnDestroy() {

@@ -11,7 +11,7 @@ import { LayoutComponent } from './layout/layout.component';
 import { MessageBoxComponent } from './message-box/message-box.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ChannelComponent } from './channel/channel.component';
-import { CreateChannelComponent } from './create-channel/create-channel.component';
+import { DirectMessageComponent } from './direct-message/direct-message.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +21,7 @@ import { CreateChannelComponent } from './create-channel/create-channel.componen
     MessageBoxComponent,
     ProfileComponent,
     ChannelComponent,
-    CreateChannelComponent
+    DirectMessageComponent
   ],
   imports: [
     BrowserModule,

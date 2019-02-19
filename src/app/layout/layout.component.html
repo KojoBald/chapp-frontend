@@ -8,16 +8,18 @@
     </h1>
 
     <!--Global Button-->
-    <button class='navButton' (click)="routeGlobal()">Global</button>
+    <button class='navButton' (click)="routeGlobal()"><i class="material-icons">
+      language
+      </i> Global</button>
   </div>
 
   <!--Channels list-->
   <h2>Channels</h2>
   <hr/>
   <ul>
-      <li>Option 1</li>
-      <li>Option 2</li>
-      <li>Option 3</li>
+      <li><a (click)="routeGlobal()" class='navLinks'>Option 1</a></li>
+      <li><a (click)="routeGlobal()" class='navLinks'>Option 2</a></li>
+      <li><a (click)="routeGlobal()" class='navLinks'>Option 3</a></li>
   </ul>
 
   <br><div class='centerNav'>
@@ -30,9 +32,9 @@
   <h2>Direct Messages</h2>
   <hr/>
   <ul>
-      <li>Option 1</li>
-      <li>Option 2</li>
-      <li>Option 3</li>
+    <li><a (click)="routeDm()" class='navLinks'>Option 1</a></li>
+    <li><a (click)="routeDm()" class='navLinks'>Option 2</a></li>
+    <li><a (click)="routeDm()" class='navLinks'>Option 3</a></li>
   </ul>
 
   <!--Admin Controls-->
@@ -59,7 +61,13 @@
       <span class="fill-remaining-space"></span>
 
       <!--Profile Icon-->
+      <button mat-button [matMenuTriggerFor]="menu">
       <mat-icon (click)="routeProfile()">account_circle</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>Item 1</button>
+        <button mat-menu-item>Item 2</button>
+      </mat-menu>
     </mat-toolbar>
 
     <!--Router-->

@@ -5,21 +5,20 @@ import { LayoutComponent } from './layout/layout.component';
 import { AuthGuardService } from './guards/auth-guard.service';
 import { ProfileComponent } from './profile/profile.component';
 import { ChannelComponent } from './channel/channel.component';
-import { CreateChannelComponent } from './create-channel/create-channel.component';
-
+import { DirectMessageComponent } from './direct-message/direct-message.component';
 
 const authorizedRoutes: Routes = [
   {
-    path: 'channel',
+    path: 'channel/:id',
     component: ChannelComponent
   },
   {
-    path: 'profile',
+    path: 'profile/:id',
     component: ProfileComponent
   },
   {
-    path: 'createchannel',
-    component: CreateChannelComponent
+    path: 'dm/:id',
+    component: DirectMessageComponent
   }
 ];
 

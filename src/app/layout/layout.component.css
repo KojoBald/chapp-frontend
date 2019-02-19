@@ -16,6 +16,13 @@
     flex-direction: column;
     background-color: rgb(65, 65, 65);
 }
+.fill-remaining-space {
+    flex: 1 1 auto;
+}
+#routerBox{
+    height:86.3vh;
+    width:100%;
+}
 
 /* SideNav CSS */
 .centerNav{
@@ -36,14 +43,11 @@ li{
     border-bottom: 2px solid rgb(65, 65, 65);
     margin: 3px;
 }
+a.navLinks:link { color: grey; text-decoration:none; font-weight:normal; }
+a.navLinks:visited { color: grey; text-decoration:none; font-weight:normal; }
+a.navLinks:hover { color: #FFF; text-decoration:underline; font-weight:normal; }
+a.navLinks:active { color: grey; text-decoration:none; font-weight:normal; }
 ul{
     height:45px;
     overflow: auto;
-}
-.fill-remaining-space {
-    flex: 1 1 auto;
-}
-#routerBox{
-    height:86.3vh;
-    width:100%;
 }
