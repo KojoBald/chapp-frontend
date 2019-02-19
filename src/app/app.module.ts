@@ -12,6 +12,7 @@ import { MessageBoxComponent } from './message-box/message-box.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ChannelComponent } from './channel/channel.component';
 import { CreateChannelComponent } from './create-channel/create-channel.component';
+import { Stepper } from './auth/stepper/stepper'
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { CreateChannelComponent } from './create-channel/create-channel.componen
     MessageBoxComponent,
     ProfileComponent,
     ChannelComponent,
-    CreateChannelComponent
+    CreateChannelComponent,
+    Stepper
   ],
   imports: [
     BrowserModule,
