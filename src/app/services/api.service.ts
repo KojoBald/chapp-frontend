@@ -6,7 +6,7 @@ import {catchError, map, tap} from "rxjs/operators";
 
 import { User } from '../models/user';
 import { Channel } from '../models/channel';
-import { Direct } from '../models/directMessage';
+import { Message } from '../models/Message';
 
 const httpOptions =
 {
@@ -112,16 +112,16 @@ export class ApiService
   }
 
   /**************************************************************
-   * UserMessages
+   * UserMessages 
   ***************************************************************/
 
- sendDirectMessage(user: Direct): any
+ sendDirectMessage(user: Message): any
  {
-   return this.http.post<Direct>(`${this.URL}/user/message/`, user, httpOptions)
+   return this.http.post<Message>(`${this.URL}/user/message/`, user, httpOptions)
    .pipe(catchError(this.handleError('inviteChannelFetch')),tap(user => {return user}))
  }
 
- updateMessage(user: Direct): any
+ updateMessage(user: Message): any
   {
     return this.http.put(`${this.URL}/user/message/:id`, user, httpOptions)
     .pipe(catchError(this.handleError('updateChannelFetch')),tap(user => {return user}))
@@ -135,8 +135,36 @@ export class ApiService
 
   getDMs(id: number): any
   {
-    return this.http.get<Direct>(`${this.URL}/user/message/all/:userId`, httpOptions)
+    return this.http.get<Message>(`${this.URL}/user/message/all/:userId`, httpOptions)
     .pipe(catchError(this.handleError('getChannelUserFetch')),tap(user => {return user}))
   }
 
+  /**************************************************************
+   * ChannelMessages
+  ***************************************************************/
+
+  sendChannelMessage(user: Message): any
+  {
+   return this.http.post<Message>(`${this.URL}/user/`, user, httpOptions)
+   .pipe(catchError(this.handleError('inviteChannelFetch')),tap(user => {return user}))
+  }
+
+  updateChannelMessage(user: Message): any
+  {
+    return this.http.put(`${this.URL}/user/`, user, httpOptions)
+    .pipe(catchError(this.handleError('updateChannelFetch')),tap(user => {return user}))
+  }
+
+  deleteChannelMessage(id: number): any
+  {
+    return this.http.delete(`${this.URL}/user/`, httpOptions)
+    .pipe(catchError(this.handleError('DeleteChannelFetch')),tap(user => {return user}))
+  }
+
+  getChannelMessages(id: number): any
+  {
+    return this.http.get<Message>(`${this.URL}/user/`, httpOptions)
+    .pipe(catchError(this.handleError('getChannelUserFetch')),tap(user => {return user}))
+  }
 }
+ 
