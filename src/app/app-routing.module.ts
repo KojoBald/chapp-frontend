@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AuthComponent } from './auth/auth.component';
-import { LayoutComponent } from './layout/layout.component';
+import { AuthComponent } from './components/auth/auth.component';
+import { LayoutComponent } from './components/layout/layout.component';
 import { AuthGuardService } from './guards/auth-guard.service';
-import { ProfileComponent } from './profile/profile.component';
-import { ChannelComponent } from './channel/channel.component';
-import { CreateChannelComponent } from './create-channel/create-channel.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { ChannelComponent } from './components/channel/channel.component';
 
 
 const authorizedRoutes: Routes = [
@@ -16,10 +15,6 @@ const authorizedRoutes: Routes = [
   {
     path: 'profile',
     component: ProfileComponent
-  },
-  {
-    path: 'createchannel',
-    component: CreateChannelComponent
   }
 ];
 

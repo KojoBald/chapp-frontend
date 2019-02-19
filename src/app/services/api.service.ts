@@ -139,8 +139,4 @@ export class ApiService
     .pipe(catchError(this.handleError('getChannelUserFetch')),tap(user => {return user}))
   }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> mitch
 }

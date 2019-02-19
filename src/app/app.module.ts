@@ -7,12 +7,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { MaterialModule } from './material.module';
 import { AppComponent } from './app.component';
-import { AuthComponent } from './auth/auth.component';
-import { LayoutComponent } from './layout/layout.component';
-import { MessageBoxComponent } from './message-box/message-box.component';
-import { ProfileComponent } from './profile/profile.component';
-import { ChannelComponent } from './channel/channel.component';
-import { CreateChannelComponent } from './create-channel/create-channel.component';
+import { AuthComponent } from './components/auth/auth.component';
+import { LayoutComponent } from './components/layout/layout.component';
+import { MessageBoxComponent } from './components/message-box/message-box.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { ChannelComponent } from './components/channel/channel.component';
 
 @NgModule({
   declarations: [
@@ -21,8 +20,7 @@ import { CreateChannelComponent } from './create-channel/create-channel.componen
     LayoutComponent,
     MessageBoxComponent,
     ProfileComponent,
-    ChannelComponent,
-    CreateChannelComponent
+    ChannelComponent
   ],
   imports: [
     BrowserModule,
