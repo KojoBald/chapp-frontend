@@ -34,29 +34,29 @@
       <mat-icon>keyboard_arrow_left</mat-icon>
     </button> <br> <br> 
 
-      <form class="signup" (submit)="signUp()">
+      <form class="signup" (submit)="signUp(first.value, last.value, username.value, email.value, password.value, confirmPassword.value); false;">
         <mat-form-field>
-          <input matInput placeholder="First Name" required>
+          <input #first matInput placeholder="First Name" required>
         </mat-form-field>
       
         <mat-form-field>
-          <input matInput placeholder="Last Name" required>
+          <input #last matInput placeholder="Last Name" required>
         </mat-form-field>
       
         <mat-form-field>
-          <input matInput placeholder="Username" required>
+          <input #username matInput placeholder="Username" required>
         </mat-form-field>
       
         <mat-form-field>
-          <input matInput placeholder="Email" required>
+          <input #email matInput placeholder="Email" required>
         </mat-form-field>
       
         <mat-form-field>
-          <input matInput placeholder="Password" type="password" required>
+          <input #password matInput placeholder="Password" type="password" required>
         </mat-form-field>
       
         <mat-form-field>
-          <input matInput placeholder="Confirm Password" type="password" required>
+          <input #confirmPassword matInput placeholder="Confirm Password" type="password" required>
         </mat-form-field>
       
         <button mat-raised-button>Sign Up</button>
