@@ -10,9 +10,9 @@ import { Router } from '@angular/router'
 export class AppComponent implements OnInit {
   title = 'chapp-app';
 
-  constructor(private router: Router) { 
+  constructor(private router: Router) { }
     
-    ngOnInit() {
-      this.router.navigate(['auth']);
-    }
+  ngOnInit() {
+    this.router.navigate(['auth']);
+  }
 }
