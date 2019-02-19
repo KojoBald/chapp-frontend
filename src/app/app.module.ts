@@ -14,6 +14,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { ChannelComponent } from './components/channel/channel.component';
 import { CreateChannelComponent } from './components/modals/create-channel/create-channel.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
+import { Stepper } from './components/auth/stepper/stepper.component'
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
     ProfileComponent,
     ChannelComponent,
     CreateChannelComponent,
-    SidenavComponent
+    SidenavComponent,
+    Stepper
   ],
   imports: [
     BrowserModule,
