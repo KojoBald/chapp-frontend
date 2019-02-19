@@ -12,14 +12,7 @@ export class AppComponent implements OnInit {
 
   constructor(private router: Router) { }
     
-<<<<<<< HEAD
-    ngOnInit() {
-      this.router.navigate(['auth']);
-    }
-
-=======
   ngOnInit() {
     this.router.navigate(['auth']);
   }
->>>>>>> develop
 }
