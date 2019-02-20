@@ -12,16 +12,6 @@ import { Router } from '@angular/router';
 export class LayoutComponent implements OnInit, OnDestroy {
   private _screenSizeSubscription: Subscription;
   screen: ScreenSize = ScreenSize.Web;
-  
-  routeProfile(){
-    this.router.navigateByUrl('/profile/:id');
-  };
-  routeGlobal(){
-    this.router.navigateByUrl('/channel/:id');
-  };
-  routeDm(){
-    this.router.navigateByUrl('/dm/:id');
-  };
 
   constructor(private _screenSize: ScreenSizeService, private router: Router) {}
 

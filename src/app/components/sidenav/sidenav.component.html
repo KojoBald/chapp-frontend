@@ -5,16 +5,23 @@
 </h1>
 
 <!--Global Button-->
-<button class='navButton'>Global</button>
+<button class='navButton' (click)="routeChannel()">Global</button>
 </div>
 
 <!--Channels list-->
 <h2>Channels</h2>
 <hr/>
+<<<<<<< HEAD
 <ul> 
   <li>Option 1</li>
   <li>Option 2</li>
   <li>Option 3</li>
+=======
+<ul>
+  <li><a (click)="routeChannel()" class='sideNavTxt'>Option 1</a></li>
+  <li><a (click)="routeChannel()" class='sideNavTxt'>Option 2</a></li>
+  <li><a (click)="routeChannel()" class='sideNavTxt'>Option 3</a></li>
+>>>>>>> 83492dac2eabba54773b6738646dda024dd70774
 </ul>
 
 <br><div class='centerNav'>
@@ -27,16 +34,16 @@
 <h2>Direct Messages</h2>
 <hr/>
 <ul>
-  <li>Option 1</li>
-  <li>Option 2</li>
-  <li>Option 3</li>
+  <li><a (click)="routeDm()" class='sideNavTxt'>Option 1</a></li>
+  <li><a (click)="routeDm()" class='sideNavTxt'>Option 2</a></li>
+  <li><a (click)="routeDm()" class='sideNavTxt'>Option 3</a></li>
 </ul>
 
 <!--Admin Controls-->
 <h2>Admin Controls</h2>
 <hr/>
 <ul>
-  <li>Manage Users</li>
-  <li>Update Channel</li>
-  <li>Delete Channel</li>
+  <li><a (click)="openManageUsers()" class='sideNavTxt'>Manage Users</a></li>
+  <li><a (click)="openUpdateChannel()" class='sideNavTxt'>Update Channel</a></li>
+  <li><a (click)="openDeleteChannel()" class='sideNavTxt'>Delete Channel</a></li>
 </ul>
