@@ -2,6 +2,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ScreenSizeService, ScreenSize } from '../../services/screen-size.service'
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material'
+import { UpdateProfileComponent } from '../modals/update-profile/update-profile.component';
 
 
 @Component({
@@ -13,7 +15,7 @@ export class LayoutComponent implements OnInit, OnDestroy {
   private _screenSizeSubscription: Subscription;
   screen: ScreenSize = ScreenSize.Web;
 
-  constructor(private _screenSize: ScreenSizeService, private router: Router) {}
+  constructor(private _screenSize: ScreenSizeService, private router: Router, private dialog: MatDialog) {}
 
   ngOnInit() {
     this._screenSizeSubscription = this._screenSize.subscribe(screen => {
@@ -24,5 +26,13 @@ export class LayoutComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this._screenSizeSubscription.unsubscribe()
+  }
+  openUpdateUser() {
+    let dialogRef = this.dialog.open(UpdateProfileComponent, {
+      width: '50vw'
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('closed', result);
+    })
   }
 }

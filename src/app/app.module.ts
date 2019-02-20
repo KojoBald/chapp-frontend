@@ -47,6 +47,6 @@ import { UpdateProfileComponent } from './components/modals/update-profile/updat
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [CreateChannelComponent, ManageUsersComponent, UpdateChannelComponent, DeleteChannelComponent]
+  entryComponents: [CreateChannelComponent, ManageUsersComponent, UpdateChannelComponent, DeleteChannelComponent, UpdateProfileComponent]
 })
 export class AppModule { }
