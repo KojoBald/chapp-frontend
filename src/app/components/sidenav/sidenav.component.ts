@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material'
 import { CreateChannelComponent } from '../modals/create-channel/create-channel.component'
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-sidenav',
@@ -8,8 +10,17 @@ import { CreateChannelComponent } from '../modals/create-channel/create-channel.
   styleUrls: ['./sidenav.component.css']
 })
 export class SidenavComponent {
+  routeProfile(){
+    this.router.navigateByUrl('/profile/:id');
+  };
+  routeChannel(){
+    this.router.navigateByUrl('/channel/:id');
+  };
+  routeDm(){
+    this.router.navigateByUrl('/dm/:id');
+  };
 
-  constructor(private dialog: MatDialog) { }
+  constructor(private dialog: MatDialog, private router: Router) { }
 
   openCreateChannelDialog() {
     let dialogRef = this.dialog.open(CreateChannelComponent, {

@@ -10,6 +10,7 @@
             <button mat-raised-button matStepperNext type="button">Next</button>
           </mat-step>
           <mat-step label="invite users">
+            <!--Add/Remove Users-->
               <mat-form-field>
                   <mat-chip-list #chipList>
                     <mat-chip *ngFor="let user of users" 
@@ -25,6 +26,7 @@
                       (matChipInputTokenEnd)="addUser($event)">
                   </mat-chip-list>
               </mat-form-field><br>
+              <!--End-->
               <button mat-raised-button matStepperPrevious type="button">Previous</button>
           </mat-step>
       </mat-horizontal-stepper>

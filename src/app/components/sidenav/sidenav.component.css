@@ -20,3 +20,8 @@ ul {
     height:45px;
     overflow: auto;
 }
+
+a.sideNavTxt:link { color: grey; text-decoration:none; font-weight:normal; }
+a.sideNavTxt:visited { color: grey; text-decoration:none; font-weight:normal; }
+a.sideNavTxt:hover { color: grey; text-decoration:none; font-weight:normal; }
+a.sideNavTxt:active { color: grey; text-decoration:none; font-weight:normal; }
