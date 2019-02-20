@@ -78,6 +78,7 @@ export class ApiService
    ***************************************************************/
   createChannel(user: Channel): any
   {
+    console.log(user)
     return this.http.post<Channel>(`${this.URL}/channel/`, user, httpOptions)
     .pipe(catchError(this.handleError('createFetch')),tap(user => {return user}))
   }

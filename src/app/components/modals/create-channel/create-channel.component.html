@@ -26,13 +26,13 @@
                   </mat-chip-list>
               </mat-form-field><br>
               <button mat-raised-button matStepperPrevious type="button">Previous</button>
-          </mat-step>
+          </mat-step> 
       </mat-horizontal-stepper>
     </form>
   </div>
   <div mat-dialog-actions>
     <button mat-raised-button color="warn" (click)="dialogRef.close()">Cancel</button>
-    <button mat-raised-button color="primary" (click)="createChannel()">Ok</button>
+    <button mat-raised-button color="primary" (click)="createChannel(name.value)">Ok</button>
   </div>
 
   <div class="loading-spinner" *ngIf="loading">

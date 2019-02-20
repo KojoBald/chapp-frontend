@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { MatDialog } from '@angular/material'
-import { CreateChannelComponent } from '../modals/create-channel/create-channel.component'
+import { MatDialog } from '@angular/material';
+import { CreateChannelComponent } from '../modals/create-channel/create-channel.component';
 
 @Component({
   selector: 'app-sidenav',
@@ -9,7 +9,7 @@ import { CreateChannelComponent } from '../modals/create-channel/create-channel.
 })
 export class SidenavComponent {
 
-  constructor(private dialog: MatDialog) { }
+  constructor(private dialog: MatDialog) {}
 
   openCreateChannelDialog() {
     let dialogRef = this.dialog.open(CreateChannelComponent, {
@@ -17,7 +17,7 @@ export class SidenavComponent {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('closed', result);
+      console.log('closed', result); 
     })
   }
 }
