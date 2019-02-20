@@ -1,8 +1,4 @@
 import { Component } from '@angular/core';
-<<<<<<< HEAD
-import { MatDialog } from '@angular/material';
-import { CreateChannelComponent } from '../modals/create-channel/create-channel.component';
-=======
 import { MatDialog } from '@angular/material'
 import { CreateChannelComponent } from '../modals/create-channel/create-channel.component'
 import { Router } from '@angular/router';
@@ -10,7 +6,6 @@ import { ManageUsersComponent } from '../modals/manage-users/manage-users.compon
 import { UpdateChannelComponent } from '../modals/update-channel/update-channel.component';
 import { DeleteChannelComponent } from '../modals/delete-channel/delete-channel.component';
 
->>>>>>> 83492dac2eabba54773b6738646dda024dd70774
 
 @Component({
   selector: 'app-sidenav',
@@ -28,11 +23,7 @@ export class SidenavComponent {
     this.router.navigateByUrl('/dm/:id');
   };
 
-<<<<<<< HEAD
-  constructor(private dialog: MatDialog) {}
-=======
   constructor(private dialog: MatDialog, private router: Router) { }
->>>>>>> 83492dac2eabba54773b6738646dda024dd70774
 
   openCreateChannelDialog() {
     let dialogRef = this.dialog.open(CreateChannelComponent, {

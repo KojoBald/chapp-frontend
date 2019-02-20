@@ -17,12 +17,7 @@ export class CreateChannelComponent {
 
   constructor(private dialogRef: MatDialogRef<CreateChannelComponent>, private snackBar: MatSnackBar, private ApiService: ApiService) { }
 
-<<<<<<< HEAD
   createChanne() {
-    console.log('creating channel', this.name)
-=======
-  createChannel() {
->>>>>>> 83492dac2eabba54773b6738646dda024dd70774
     this.loading = true;
     setTimeout(() => {
       //TODO: make an actual api call here instead of a timeout
