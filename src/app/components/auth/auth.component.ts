@@ -12,9 +12,6 @@ export class AuthComponent
 
   constructor(private ApiService: ApiService) {} 
 
-<<<<<<< HEAD:src/app/auth/auth.component.ts
-}
-=======
   signUp(user) : void
   {
     event.preventDefault();
@@ -22,4 +19,3 @@ export class AuthComponent
     .subscribe(newUser => newUser);
   }
 }
->>>>>>> develop:src/app/components/auth/auth.component.ts
