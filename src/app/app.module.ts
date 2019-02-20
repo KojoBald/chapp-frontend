@@ -17,7 +17,8 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { Stepper } from './components/auth/stepper/stepper.component';
 import { ManageUsersComponent } from './components/modals/manage-users/manage-users.component';
 import { UpdateChannelComponent } from './components/modals/update-channel/update-channel.component';
-import { DeleteChannelComponent } from './components/modals/delete-channel/delete-channel.component'
+import { DeleteChannelComponent } from './components/modals/delete-channel/delete-channel.component';
+import { UpdateProfileComponent } from './components/modals/update-profile/update-profile.component'
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { DeleteChannelComponent } from './components/modals/delete-channel/delet
     Stepper,
     ManageUsersComponent,
     UpdateChannelComponent,
-    DeleteChannelComponent
+    DeleteChannelComponent,
+    UpdateProfileComponent
   ],
   imports: [
     BrowserModule,
