@@ -6,8 +6,8 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
  */
 @Component({
   selector: 'app-stepper',
-  templateUrl: 'stepper.html',
-  styleUrls: ['stepper.css'],
+  templateUrl: 'stepper.component.html',
+  styleUrls: ['stepper.component.css'],
 })
 export class Stepper implements OnInit {
   isLinear = false;

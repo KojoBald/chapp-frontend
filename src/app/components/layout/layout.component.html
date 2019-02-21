@@ -1,50 +1,7 @@
 <mat-sidenav-container id="app-container">
   <mat-sidenav #sidenav [mode]="(screen === 'mobile') ? 'over' : 'side'" [opened]="screen === 'web'" id="sidenav">
-
-    <div class='centerNav'>
-      <h1>
-      <img src='../../assets/fake_logo.png' height=30vw>
-      Chapp
-    </h1>
-
-    <!--Global Button-->
-    <button class='navButton' (click)="routeGlobal()">Global</button>
-  </div>
-
-  <!--Channels list-->
-  <h2>Channels</h2>
-  <hr/>
-  <ul>
-      <li>Option 1</li>
-      <li>Option 2</li>
-      <li>Option 3</li>
-  </ul>
-
-  <br><div class='centerNav'>
-
-  <!--+ Channel Button-->
-  <button class='navButton' (click)='routeCreateChannel()'>+ Channel</button>
-  </div>
-
-  <!--Direct Messages list-->
-  <h2>Direct Messages</h2>
-  <hr/>
-  <ul>
-      <li>Option 1</li>
-      <li>Option 2</li>
-      <li>Option 3</li>
-  </ul>
-
-  <!--Admin Controls-->
-  <h2>Admin Controls</h2>
-  <hr/>
-  <ul>
-      <li>Manage Users</li>
-      <li>Update Channel</li>
-      <li>Delete Channel</li>
-  </ul>
-
-  </mat-sidenav><!--End Of SideNav-->
+    <app-sidenav></app-sidenav>
+  </mat-sidenav>
 
   <mat-sidenav-content id="content">
 
@@ -59,7 +16,20 @@
       <span class="fill-remaining-space"></span>
 
       <!--Profile Icon-->
-      <mat-icon (click)="routeProfile()">account_circle</mat-icon>
+      <button mat-button [matMenuTriggerFor]="menu">
+        <mat-icon>account_circle</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu"><div style='text-align:center; margin: 10px;'>
+        <h2 style='color:black; font-size:16px;'>Change Email</h2>
+        <input tyle='text' class='updateBox'>
+        <h2 style='color:black; font-size:16px;'>Change Photo</h2>
+        <input tyle='text' class='updateBox'><br/>
+        <i style= 'font-size:12px;'>(Make sure to use the image address)</i><br/><br/>
+        <button mat-menu-item style='background-color:rgb(128, 189, 128);'>Submit Changes</button><br/>
+        <button mat-menu-item style='background-color:rgb(199, 127, 127);'><i class="material-icons" style='vertical-align:middle;'>
+            power_settings_new
+        </i> Log Out</button>
+      </div></mat-menu>
     </mat-toolbar>
 
     <!--Router-->

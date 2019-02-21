@@ -1,0 +1,19 @@
+<div>
+    <h1 mat-dialog-title style="color: black">Update Channel Name</h1>
+    <div mat-dialog-content>
+      <form>
+                <mat-form-field>
+                    <input matInput name="Name" placeholder="Channel Name" [(ngModel)]="Name" cdkFocusInitial>
+                </mat-form-field><br>
+      </form>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-raised-button color="warn" (click)="dialogRef.close()">Cancel</button>
+      <button mat-raised-button color="primary" (click)="updateChannel()">Update</button>
+    </div>
+  
+    <div class="loading-spinner" *ngIf="loading">
+      <mat-spinner></mat-spinner>
+    </div>
+  </div>
+  

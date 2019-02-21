@@ -22,7 +22,7 @@ const httpOptions =
 })
 export class ApiService 
 {
-  private URL: string = 'http//localhost:3005';
+  private URL: string = 'https://www.chapp-backend.herokuapp.com';
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(error);
@@ -38,25 +38,26 @@ export class ApiService
    ***************************************************************/
   signUp(user: User): any
   {
-    return this.http.post<User[]>(`${this.URL}/user/`, user, httpOptions)
-    .pipe(catchError(this.handleError("signupFetch")),tap(user => {return user}))
+    console.log(user);
+    return this.http.post<User>(`${this.URL}/user/`, user, httpOptions)
+    .pipe(catchError(this.handleError("signUp")),tap(user => {return user}))
   }
 
   login(user: User): any
   {
-    return this.http.put(`${this.URL}/user/login`, user, httpOptions)
-    .pipe(catchError(this.handleError('Fetched')),tap(user => {return user}))
+    return this.http.put<User>(`${this.URL}/user/login`, user, httpOptions)
+    .pipe(catchError(this.handleError("Fetched")),tap(user => {return user}))
   }
 
   updateUser(user: User): any
   {
-    return this.http.put(`${this.URL}/user/:id`, user, httpOptions)
+    return this.http.put<User>(`${this.URL}/user/:id`, user, httpOptions)
     .pipe(catchError(this.handleError('updateFetch')),tap(user => {return user}))
   }
 
   deleteUser(id: number): any
   {
-    return this.http.delete(`${this.URL}/user/:id`, httpOptions)
+    return this.http.delete<User>(`${this.URL}/user/:id`, httpOptions)
     .pipe(catchError(this.handleError('deleteFetched')),tap(user => {return user}))
   }
 
@@ -89,13 +90,13 @@ export class ApiService
 
   updateChannel(user: Channel): any
   {
-    return this.http.put(`${this.URL}/channel/:id`, user, httpOptions)
+    return this.http.put<Channel>(`${this.URL}/channel/:id`, user, httpOptions)
     .pipe(catchError(this.handleError('updateChannelFetch')),tap(user => {return user}))
   }
 
   deleteChannel(id: number): any
   {
-    return this.http.delete(`${this.URL}/channel/:id`, httpOptions)
+    return this.http.delete<Channel>(`${this.URL}/channel/:id`, httpOptions)
     .pipe(catchError(this.handleError('DeleteChannelFetch')),tap(user => {return user}))
   }
 
@@ -123,13 +124,13 @@ export class ApiService
 
  updateMessage(user: Message): any
   {
-    return this.http.put(`${this.URL}/user/message/:id`, user, httpOptions)
+    return this.http.put<Message>(`${this.URL}/user/message/:id`, user, httpOptions)
     .pipe(catchError(this.handleError('updateChannelFetch')),tap(user => {return user}))
   }
 
   deleteDM(id: number): any
   {
-    return this.http.delete(`${this.URL}/user/message/:id`, httpOptions)
+    return this.http.delete<Message>(`${this.URL}/user/message/:id`, httpOptions)
     .pipe(catchError(this.handleError('DeleteChannelFetch')),tap(user => {return user}))
   }
 
@@ -151,13 +152,13 @@ export class ApiService
 
   updateChannelMessage(user: Message): any
   {
-    return this.http.put(`${this.URL}/user/`, user, httpOptions)
+    return this.http.put<Message>(`${this.URL}/user/`, user, httpOptions)
     .pipe(catchError(this.handleError('updateChannelFetch')),tap(user => {return user}))
   }
 
   deleteChannelMessage(id: number): any
   {
-    return this.http.delete(`${this.URL}/user/`, httpOptions)
+    return this.http.delete<Message>(`${this.URL}/user/`, httpOptions)
     .pipe(catchError(this.handleError('DeleteChannelFetch')),tap(user => {return user}))
   }
 

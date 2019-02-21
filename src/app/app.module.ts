@@ -1,18 +1,23 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http'; 
 
 import { AppRoutingModule } from './app-routing.module';
 import { MaterialModule } from './material.module';
 import { AppComponent } from './app.component';
+import { DirectMessageComponent } from './direct-message/direct-message.component';
 import { AuthComponent } from './components/auth/auth.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { MessageBoxComponent } from './components/message-box/message-box.component';
-import { ProfileComponent } from './components/profile/profile.component';
 import { ChannelComponent } from './components/channel/channel.component';
-import { Stepper } from './components/auth/stepper/stepper'
+import { CreateChannelComponent } from './components/modals/create-channel/create-channel.component';
+import { SidenavComponent } from './components/sidenav/sidenav.component';
+import { Stepper } from './components/auth/stepper/stepper.component';
+import { ManageUsersComponent } from './components/modals/manage-users/manage-users.component';
+import { UpdateChannelComponent } from './components/modals/update-channel/update-channel.component';
+import { DeleteChannelComponent } from './components/modals/delete-channel/delete-channel.component'
 
 @NgModule({
   declarations: [
@@ -20,9 +25,14 @@ import { Stepper } from './components/auth/stepper/stepper'
     AuthComponent,
     LayoutComponent,
     MessageBoxComponent,
-    ProfileComponent,
     ChannelComponent,
-    Stepper
+    DirectMessageComponent,
+    CreateChannelComponent,
+    SidenavComponent,
+    Stepper,
+    ManageUsersComponent,
+    UpdateChannelComponent,
+    DeleteChannelComponent
   ],
   imports: [
     BrowserModule,
@@ -30,9 +40,11 @@ import { Stepper } from './components/auth/stepper/stepper'
     BrowserAnimationsModule,
     MaterialModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [CreateChannelComponent, ManageUsersComponent, UpdateChannelComponent, DeleteChannelComponent]
 })
 export class AppModule { }
