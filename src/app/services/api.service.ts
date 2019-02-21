@@ -22,7 +22,7 @@ const httpOptions =
 })
 export class ApiService 
 {
-  private URL: string = 'https://www.chapp-backend.herokuapp.com';
+  private URL: string = 'http://localhost:8080';
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(error);
@@ -69,8 +69,12 @@ export class ApiService
 
   getUsersChannels(): any
   {
-    return this.http.get<User>(`${this.URL}/:id/channels`, httpOptions)
+    return this.http.get<User>(`${this.URL}/user/:id/channels`, httpOptions)
     .pipe(catchError(this.handleError('getChannelFetch')),tap(user => {return user}))
+  }
+
+  searchForUser(query: string) {
+    return this.http.get<User[]>(`${this.URL}/user?q=${query}`, httpOptions)
   }
 
   /***************************************************************

@@ -12,8 +12,8 @@ import {
     MatStepperModule,
     MatChipsModule,
     MatSnackBarModule,
-    MatMenuModule
-
+    MatMenuModule,
+    MatAutocompleteModule
  } from '@angular/material';
 
 @NgModule({
@@ -29,7 +29,8 @@ import {
         MatStepperModule,
         MatChipsModule,
         MatSnackBarModule,
-        MatMenuModule
+        MatMenuModule,
+        MatAutocompleteModule
     ]
 })
 export class MaterialModule { }

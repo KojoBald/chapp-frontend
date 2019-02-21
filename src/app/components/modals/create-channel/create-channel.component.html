@@ -17,16 +17,21 @@
                       [removable]="true" 
                       [selectable]="true" 
                       (removed)="removeUser(user)" >
-                      {{ user.name }}
+                      {{ user.username }}
                       <mat-icon matChipRemove>cancel</mat-icon>
                     </mat-chip>
-                    <input matInput name="Users" placeholder="Users" 
+                    <input matInput name="Users" placeholder="Users" #huh
                       [matChipInputFor]="chipList"
-                      [matChipInputSeparatorKeyCodes]="userKeySeparators"
-                      (matChipInputTokenEnd)="addUser($event)">
+                      (input)="searchForUsers($event)"
+                      [matAutocomplete]="auto">
                   </mat-chip-list>
               </mat-form-field>
-              <i style= 'font-size:12px;'>(Press Enter to add Member, 'X' to remove)</i>
+              <mat-autocomplete #auto="matAutocomplete" (optionSelected)="addUser($event)">
+                <mat-option *ngFor="let user of userOptions" [value]="user">
+                  <span style="margin-right: 5px; font-weight: 600">{{ user.first + ' ' + user.last }}</span><span style="font-style: italic">@{{ user.username }}</span>
+                </mat-option>
+              </mat-autocomplete>
+              <!-- <i style= 'font-size:12px;'>(Press Enter to add Member, 'X' to remove)</i> -->
               <br>
               <!--End-->
               <button mat-raised-button matStepperPrevious type="button">Previous</button>

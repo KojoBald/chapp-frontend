@@ -1,8 +1,12 @@
-import { Component } from '@angular/core';
-import { MatDialogRef, MatChipInputEvent, MatSnackBar } from '@angular/material';
+import { Component, ViewChild } from '@angular/core';
+import { MatDialogRef, MatChipInputEvent, MatSnackBar, MatAutocompleteSelectedEvent } from '@angular/material';
 import { ENTER, COMMA } from '@angular/cdk/keycodes';
+
 import { Channel } from '../../../models/channel';
 import { ApiService } from '../../../services/api.service';
+import { Router } from '@angular/router'
+
+import _debounce from 'lodash.debounce'
 
 @Component({
   selector: 'app-create-channel',
@@ -11,34 +15,41 @@ import { ApiService } from '../../../services/api.service';
 })
 export class CreateChannelComponent {
   loading: boolean = false;
-  readonly userKeySeparators = [ENTER, COMMA];
   name: string = '';
   users: any[] = [];
+  userOptions: any[] = [];
 
-  constructor(private dialogRef: MatDialogRef<CreateChannelComponent>, private snackBar: MatSnackBar, private ApiService: ApiService) { }
+  @ViewChild('huh') usersInput;
 
-  // createChannel() { 
-  //   this.loading = true;
-  //   setTimeout(() => {
-  //     //TODO: make an actual api call here instead of a timeout
-  //     this.loading = false; 
-  //     this.dialogRef.close();
-  //     let snackBarRef = this.snackBar.open(`Channel "${this.name}" Created!`, 'Go to Channel', {
-  //       duration: 3000
-  //     })
-  //     snackBarRef.onAction().subscribe(() => {
-  //       //TODO: go to new channel here
-  //     })
-  //   }, 3000)
-  // }
+  constructor(
+    private dialogRef: MatDialogRef<CreateChannelComponent>, 
+    private snackBar: MatSnackBar, 
+    private api: ApiService,
+    private router: Router 
+  ) { }
 
-  addUser({ input, value }: MatChipInputEvent) {
-    if((value || '').trim()) {
-      this.users.push({ name: value.trim() })
-    }
-    if(input) {
-      input.value = ''
-    }
+  createChannel() {
+    this.loading = true;
+    this.api.createChannel({ 
+      name: this.name,
+      users: this.users.map(user => user.id),
+      admin_id: null
+    }).subscribe(({ channel }) => {
+      this.loading = false;
+      this.dialogRef.close();
+      let snackBarRef = this.snackBar.open(`Channel "${this.name}" Created!`, 'Go to Channel', {
+        duration: 3000
+      })
+      snackBarRef.onAction().subscribe(() => {
+        this.router.navigateByUrl(`/channel/${channel.id}`)
+      })
+    })
+  }
+
+  addUser({ option }: MatAutocompleteSelectedEvent) {
+    this.users.push(option.value)
+    this.usersInput.nativeElement.value = ''
+    this.userOptions = [];
   }
 
   removeUser(user) {
@@ -47,14 +58,11 @@ export class CreateChannelComponent {
     if(index >= 0) this.users.splice(index, 1);
   }
 
-  createChannel(name) : void
-  {
-    event.preventDefault();
-    let channel: Channel = 
-    {
-      name: name
-    }
-    this.ApiService.createChannel(channel)
-    .subscribe(newChannel => console.log(newChannel))
-  }
+  searchForUsers = _debounce(({ target: { value }}) => {
+    console.log('searching', value)
+    this.api.searchForUser(value)
+      .subscribe(users => {
+        this.userOptions = users;
+      });
+  }, 500)
 }
