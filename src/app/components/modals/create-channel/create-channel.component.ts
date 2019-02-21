@@ -17,20 +17,20 @@ export class CreateChannelComponent {
 
   constructor(private dialogRef: MatDialogRef<CreateChannelComponent>, private snackBar: MatSnackBar, private ApiService: ApiService) { }
 
-  createChanne() {
-    this.loading = true;
-    setTimeout(() => {
-      //TODO: make an actual api call here instead of a timeout
-      this.loading = false; 
-      this.dialogRef.close();
-      let snackBarRef = this.snackBar.open(`Channel "${this.name}" Created!`, 'Go to Channel', {
-        duration: 3000
-      })
-      snackBarRef.onAction().subscribe(() => {
-        //TODO: go to new channel here
-      })
-    }, 3000)
-  }
+  // createChannel() { 
+  //   this.loading = true;
+  //   setTimeout(() => {
+  //     //TODO: make an actual api call here instead of a timeout
+  //     this.loading = false; 
+  //     this.dialogRef.close();
+  //     let snackBarRef = this.snackBar.open(`Channel "${this.name}" Created!`, 'Go to Channel', {
+  //       duration: 3000
+  //     })
+  //     snackBarRef.onAction().subscribe(() => {
+  //       //TODO: go to new channel here
+  //     })
+  //   }, 3000)
+  // }
 
   addUser({ input, value }: MatChipInputEvent) {
     if((value || '').trim()) {
