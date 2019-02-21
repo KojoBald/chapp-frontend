@@ -17,8 +17,12 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { Stepper } from './components/auth/stepper/stepper.component';
 import { ManageUsersComponent } from './components/modals/manage-users/manage-users.component';
 import { UpdateChannelComponent } from './components/modals/update-channel/update-channel.component';
+<<<<<<< HEAD
+import { DeleteChannelComponent } from './components/modals/delete-channel/delete-channel.component'
+=======
 import { DeleteChannelComponent } from './components/modals/delete-channel/delete-channel.component';
 import { UpdateProfileComponent } from './components/modals/update-profile/update-profile.component'
+>>>>>>> 2f0a0ca160b86c8e6eb0a50b6a1bf41cff913238
 
 @NgModule({
   declarations: [
@@ -33,8 +37,12 @@ import { UpdateProfileComponent } from './components/modals/update-profile/updat
     Stepper,
     ManageUsersComponent,
     UpdateChannelComponent,
+<<<<<<< HEAD
+    DeleteChannelComponent
+=======
     DeleteChannelComponent,
     UpdateProfileComponent
+>>>>>>> 2f0a0ca160b86c8e6eb0a50b6a1bf41cff913238
   ],
   imports: [
     BrowserModule,
@@ -47,6 +55,10 @@ import { UpdateProfileComponent } from './components/modals/update-profile/updat
   ],
   providers: [],
   bootstrap: [AppComponent],
+<<<<<<< HEAD
+  entryComponents: [CreateChannelComponent, ManageUsersComponent, UpdateChannelComponent, DeleteChannelComponent]
+=======
   entryComponents: [CreateChannelComponent, ManageUsersComponent, UpdateChannelComponent, DeleteChannelComponent, UpdateProfileComponent]
+>>>>>>> 2f0a0ca160b86c8e6eb0a50b6a1bf41cff913238
 })
 export class AppModule { }
