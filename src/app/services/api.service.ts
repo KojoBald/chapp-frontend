@@ -7,13 +7,22 @@ import {catchError, map, tap} from "rxjs/operators";
 import { User } from '../models/user';
 import { Channel } from '../models/channel';
 import { Message } from '../models/Message';
+import { UserLogin } from '../models/UserLogin';
+
+// const httpOptions =
+// {
+//   headers: new HttpHeaders(
+//     {
+//       "Content-Type": "application/json",
+//     })
+// }
 
 const httpOptions =
 {
   headers: new HttpHeaders(
     {
       "Content-Type": "application/json",
-      "Authorization": sessionStorage.getItem("token")
+      "Authorization" : sessionStorage.getItem("token")
     })
 }
 
@@ -22,7 +31,7 @@ const httpOptions =
 })
 export class ApiService 
 {
-  private URL: string = 'http://localhost:8080';
+  private URL: string = 'http://localhost:8080' /*'https://www.chapp-backend.herokuapp.com'*/;
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(error);
@@ -38,26 +47,25 @@ export class ApiService
    ***************************************************************/
   signUp(user: User): any
   {
-    console.log(user);
     return this.http.post<User>(`${this.URL}/user/`, user, httpOptions)
     .pipe(catchError(this.handleError("signUp")),tap(user => {return user}))
   }
 
-  login(user: User): any
+  login(user: UserLogin): any
   {
-    return this.http.put<User>(`${this.URL}/user/login`, user, httpOptions)
+    return this.http.post<UserLogin>(`${this.URL}/user/login`, user, httpOptions)
     .pipe(catchError(this.handleError("Fetched")),tap(user => {return user}))
   }
 
   updateUser(user: User): any
   {
-    return this.http.put<User>(`${this.URL}/user/:id`, user, httpOptions)
+    return this.http.put(`${this.URL}/user/:id`, user, httpOptions)
     .pipe(catchError(this.handleError('updateFetch')),tap(user => {return user}))
   }
 
   deleteUser(id: number): any
   {
-    return this.http.delete<User>(`${this.URL}/user/:id`, httpOptions)
+    return this.http.delete(`${this.URL}/user/:id`, httpOptions)
     .pipe(catchError(this.handleError('deleteFetched')),tap(user => {return user}))
   }
 

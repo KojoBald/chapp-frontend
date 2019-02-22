@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { ApiService } from '../../../services/api.service';
+import { User } from '../../../models/user';
 
 /**
  * @title Stepper overview
@@ -18,7 +20,7 @@ export class Stepper implements OnInit {
   fourthFormGroup: FormGroup;
   fifthFormGroup: FormGroup;
 
-  constructor(private _formBuilder: FormBuilder) {}
+  constructor(private _formBuilder: FormBuilder, private ApiService: ApiService) {}
 
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({
@@ -39,5 +41,24 @@ export class Stepper implements OnInit {
     this.fifthFormGroup = this._formBuilder.group({
       fifthCtrl: ['', Validators.required]
     });
+  }
+
+  signUp(first, last, username, email, password, confirmPassword) : void
+  {
+    event.preventDefault(); 
+    if(password != confirmPassword){
+      alert("your passwords do not match");
+      return
+    }
+    let user: User = 
+    {
+      first: first,
+      last: last,
+      username: username,
+      email: email,
+      password: password
+    }
+    this.ApiService.signUp(user)
+    .subscribe(newUser => console.log(newUser), sessionStorage.setItem("token", ""));
   }
 }

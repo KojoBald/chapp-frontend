@@ -1,6 +1,9 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { ApiService } from '../../services/api.service';
 import { User } from '../../models/user';
+import { UserLogin} from '../../models/UserLogin';
+
 
 @Component({
   selector: 'app-auth',
@@ -11,16 +14,17 @@ export class AuthComponent
 {
   whichForm: string = 'toggle'; 
 
-  constructor(private ApiService: ApiService) {}
+  constructor(private ApiService: ApiService, private router: Router) {}
+  
 
-  ngOnInit(){
-    sessionStorage.setItem("token", "");
-  }
+  ngOnInit()
+  {sessionStorage.setItem("token", '')}
 
   signUp(first, last, username, email, password, confirmPassword) : void
   {
-    event.preventDefault();
-    if(password != confirmPassword){
+    event.preventDefault(); 
+    if(password != confirmPassword)
+    {
       alert("your passwords do not match");
       return
     }
@@ -33,6 +37,32 @@ export class AuthComponent
       password: password
     }
     this.ApiService.signUp(user)
-    .subscribe(newUser => console.log(newUser));
+    .subscribe(newUser => {console.log(newUser)
+    sessionStorage.setItem('token', newUser.token)
+    })
   }
+
+  login(emails, passwords)
+  {
+    event.preventDefault();
+    let login: UserLogin =
+    {
+      email: emails,
+      password: passwords
+    }
+    this.ApiService.login(login)
+    .subscribe(data => {console.log(data)
+    sessionStorage.setItem('token', data.token)
+    this.routeToHome()
+    })
+  }
+
+  routeToHome()
+  {
+    if(sessionStorage.getItem('token') !== "")
+    {
+      this.router.navigate([''])
+    }
+  }
+
 }

@@ -3,8 +3,8 @@
     <form [formGroup]="firstFormGroup">
       <ng-template matStepLabel>First Name</ng-template>
       <mat-form-field>
-        <input matInput placeholder="First name" formControlName="firstCtrl" required>
-      </mat-form-field>
+        <input matInput #first placeholder="First name" formControlName="firstCtrl" required>
+      </mat-form-field> 
       <div>
         <button mat-button matStepperNext>Next</button>
       </div>
@@ -15,7 +15,7 @@
       <form [formGroup]="FormGroup">
         <ng-template matStepLabel>Last name</ng-template>
         <mat-form-field>
-          <input matInput placeholder="Last name" formControlName="Ctrl" required>
+          <input matInput #last placeholder="Last name" formControlName="Ctrl" required>
         </mat-form-field>
         <div>
           <button mat-button matStepperNext>Next</button>
@@ -27,7 +27,7 @@
     <form [formGroup]="secondFormGroup">
       <ng-template matStepLabel>Enter an email address</ng-template>
       <mat-form-field>
-        <input matInput placeholder="Email" formControlName="secondCtrl" required>
+        <input matInput #email placeholder="Email" formControlName="secondCtrl" required>
       </mat-form-field>
       <div>
         <button mat-button matStepperPrevious>Back</button>

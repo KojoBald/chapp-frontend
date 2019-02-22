@@ -35,4 +35,9 @@ export class LayoutComponent implements OnInit, OnDestroy {
       console.log('closed', result);
     })
   }
+
+  Logout()
+  {
+    sessionStorage.clear();
+  }
 }
