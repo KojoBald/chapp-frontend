@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { ApiService } from '../../services/api.service';
 import { User } from '../../models/user';
 import { UserLogin} from '../../models/UserLogin';
@@ -13,7 +14,7 @@ export class AuthComponent
 {
   whichForm: string = 'toggle'; 
 
-  constructor(private ApiService: ApiService) {}
+  constructor(private ApiService: ApiService, private router: Router) {}
   
 
   ngOnInit()
@@ -50,6 +51,18 @@ export class AuthComponent
       password: passwords
     }
     this.ApiService.login(login)
-    .subscribe(data => console.log(data))
+    .subscribe(data => {console.log(data)
+    sessionStorage.setItem('token', data.token)
+    this.routeToHome()
+    })
   }
+
+  routeToHome()
+  {
+    if(sessionStorage.getItem('token') !== "")
+    {
+      this.router.navigate([''])
+    }
+  }
+
 }
