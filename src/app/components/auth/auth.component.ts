@@ -18,7 +18,10 @@ export class AuthComponent
   
 
   ngOnInit()
-  {sessionStorage.setItem("token", '')}
+  {
+    sessionStorage.setItem("token", '')
+    sessionStorage.setItem("userId", '')
+  }
 
   signUp(first, last, username, email, password, confirmPassword) : void
   {
@@ -37,9 +40,11 @@ export class AuthComponent
       password: password
     }
     this.ApiService.signUp(user)
-    .subscribe(newUser => {console.log(newUser)
+    .subscribe(newUser => {console.log("here", newUser)
     sessionStorage.setItem('token', newUser.token)
-    })
+    sessionStorage.setItem("userId", newUser.user.id);
+    this.routeToHome()
+    alert('user created')})
   }
 
   login(emails, passwords)
@@ -53,6 +58,7 @@ export class AuthComponent
     this.ApiService.login(login)
     .subscribe(data => {console.log(data)
     sessionStorage.setItem('token', data.token)
+    sessionStorage.setItem("userId", data.user.id);
     this.routeToHome()
     })
   }

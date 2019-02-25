@@ -5,17 +5,19 @@ import {Observable, of} from "rxjs";
 import {catchError, map, tap} from "rxjs/operators";
 
 import { User } from '../models/user';
+import { SideUser } from '../models/sidebarUser';
 import { Channel } from '../models/channel';
 import { Message } from '../models/Message';
 import { UserLogin } from '../models/UserLogin';
 
-// const httpOptions =
-// {
-//   headers: new HttpHeaders(
-//     {
-//       "Content-Type": "application/json",
-//     })
-// }
+
+ const LoginOptions =
+{
+  headers: new HttpHeaders(
+    {
+      "Content-Type": "application/json",
+    })
+}
 
 const httpOptions =
 {
@@ -47,13 +49,15 @@ export class ApiService
    ***************************************************************/
   signUp(user: User): any
   {
-    return this.http.post<User>(`${this.URL}/user/`, user, httpOptions)
+    // console.log(user)
+    return this.http.post<User>(`${this.URL}/user/`, user, LoginOptions)
     .pipe(catchError(this.handleError("signUp")),tap(user => {return user}))
   }
 
   login(user: UserLogin): any
   {
-    return this.http.post<UserLogin>(`${this.URL}/user/login`, user, httpOptions)
+    console.log(user)
+    return this.http.post<UserLogin>(`${this.URL}/user/login`, user, LoginOptions)
     .pipe(catchError(this.handleError("Fetched")),tap(user => {return user}))
   }
 
@@ -77,7 +81,7 @@ export class ApiService
 
   getUsersChannels(): any
   {
-    return this.http.get<User>(`${this.URL}/:id/channels`, httpOptions)
+    return this.http.get<Channel>(`${this.URL}/:id/channels`, httpOptions)
     .pipe(catchError(this.handleError('getChannelFetch')),tap(user => {return user}))
   }
 
@@ -145,8 +149,14 @@ export class ApiService
 
   getDMs(id: number): any
   {
-    return this.http.get<Message>(`${this.URL}/user/message/all/:userId`, httpOptions)
+    return this.http.get<Message>(`${this.URL}/user/message/all`, httpOptions)
     .pipe(catchError(this.handleError('getChannelUserFetch')),tap(user => {return user}))
+  }
+
+  getmessageSender(id: number): any
+  {
+    return this.http.get<SideUser>(`${this.URL}/user/${id}/message/`, httpOptions)
+    .pipe(catchError(this.handleError('getFetch')),tap(user => {return user}))
   }
 
   /**************************************************************
