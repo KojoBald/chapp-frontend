@@ -35,4 +35,11 @@ export class LayoutComponent implements OnInit, OnDestroy {
       console.log('closed', result);
     })
   }
+
+  Logout()
+  {
+    sessionStorage.setItem('token', '');
+    // this.router.navigate(['/auth'])
+    location.reload();
+  }
 }

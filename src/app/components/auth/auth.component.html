@@ -5,16 +5,16 @@
     <button mat-fab color="accent" (click)="whichForm = 'toggle'">
       <mat-icon>keyboard_arrow_right</mat-icon>
     </button>
-    <form class="login">
+    <form class="login" (submit)="login(emails.value, passwords.value); false;">
         <mat-form-field>
-          <input matInput placeholder="Username" required>
+          <input matInput #emails placeholder="Email" required>
         </mat-form-field>
       
         <mat-form-field>
-          <input matInput placeholder="Password" type="password" required>
+          <input matInput #passwords placeholder="Password" type="password" required>
         </mat-form-field>
       
-        <button mat-raised-button routerLink=''>Log In</button>
+        <button mat-raised-button>Log In</button>
     </form>
   </section>
 
@@ -29,8 +29,8 @@
   </section>
 
   <section id="sign-up">
-<app-stepper></app-stepper>
-    <!-- <h2>Sign-up</h2>
+<!--<app-stepper></app-stepper>-->
+    <h2>Sign-up</h2>
     <button mat-fab color="accent" (click)="whichForm = 'toggle'">
       <mat-icon>keyboard_arrow_left</mat-icon>
     </button> <br> <br> 
@@ -60,8 +60,8 @@
           <input #confirmPassword matInput placeholder="Confirm Password" type="password" required>
         </mat-form-field>
       
-        <button mat-raised-button>Sign Up</button> -->
-      <!-- </form> -->
+        <button mat-raised-button>Sign Up</button>
+      </form>
 
   </section>
 

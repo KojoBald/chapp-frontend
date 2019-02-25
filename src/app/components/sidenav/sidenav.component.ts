@@ -54,7 +54,7 @@ export class SidenavComponent {
       width: '50vw'
     });
     dialogRef.afterClosed().subscribe(result => {
-      console.log('closed', result);
+      console.log('closed', result); 
     })
   }
 }
