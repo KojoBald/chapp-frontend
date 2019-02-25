@@ -1,10 +1,10 @@
 <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
         {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
       </button>
-      <mat-horizontal-stepper [linear]="isLinear" #stepper>
+      <mat-horizontal-stepper [linear]="isLinear" #stepper style='background-color:rgb(65, 65, 65); color:white;'>
         <mat-step [stepControl]="firstFormGroup">
           <form [formGroup]="firstFormGroup">
-            <ng-template matStepLabel>Fill out your name</ng-template>
+            <ng-template matStepLabel><p style='color:white'>Fill out your name</p></ng-template>
             <mat-form-field>
               <input matInput placeholder="First name, last name" formControlName="firstCtrl" required>
             </mat-form-field>
@@ -15,7 +15,7 @@
         </mat-step>
         <mat-step [stepControl]="secondFormGroup">
           <form [formGroup]="secondFormGroup">
-            <ng-template matStepLabel>Enter an email address</ng-template>
+            <ng-template matStepLabel><p style='color:white'>Enter an email address</p></ng-template>
             <mat-form-field>
               <input matInput placeholder="Email" formControlName="secondCtrl" required>
             </mat-form-field>
@@ -27,7 +27,7 @@
         </mat-step>
         <mat-step [stepControl]="thirdFormGroup">
           <form [formGroup]="thirdFormGroup">
-            <ng-template matStepLabel>Pick a username</ng-template>
+            <ng-template matStepLabel><p style='color:white'>Pick a username</p></ng-template>
             <mat-form-field>
               <input matInput placeholder="Username" formControlName="thirdCtrl" required>
             </mat-form-field>
@@ -39,8 +39,8 @@
         </mat-step>
         
         <mat-step>
-          <ng-template matStepLabel>Done</ng-template>
-          You are now done.
+          <ng-template matStepLabel style='color:white'><p style='color:white'>Done</p></ng-template>
+          All set!
           <div>
             <button mat-button matStepperPrevious>Back</button>
             <button mat-button (click)="stepper.reset()">Reset</button>
