@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { ManageUsersComponent } from '../modals/manage-users/manage-users.component';
 import { UpdateChannelComponent } from '../modals/update-channel/update-channel.component';
 import { DeleteChannelComponent } from '../modals/delete-channel/delete-channel.component';
+import { ApiService } from '../../services/api.service';
 
 
 @Component({
@@ -13,6 +14,17 @@ import { DeleteChannelComponent } from '../modals/delete-channel/delete-channel.
   styleUrls: ['./sidenav.component.css']
 })
 export class SidenavComponent {
+  private id = sessionStorage.getItem("userId");
+
+  ngOnInit() 
+  {this.getmessageSender(this.id)}
+
+  getmessageSender(id)
+  {
+    this.ApiService.getmessageSender(id)
+    .subscribe(sender => console.log(sender))
+  }
+
   routeProfile(){
     this.router.navigateByUrl('/profile/:id');
   };
@@ -23,7 +35,7 @@ export class SidenavComponent {
     this.router.navigateByUrl('/dm/:id');
   };
 
-  constructor(private dialog: MatDialog, private router: Router) { }
+  constructor(private dialog: MatDialog, private router: Router, private ApiService: ApiService) { }
 
   openCreateChannelDialog() {
     let dialogRef = this.dialog.open(CreateChannelComponent, {
