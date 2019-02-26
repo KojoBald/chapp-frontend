@@ -42,14 +42,8 @@ export class AuthComponent
     this.ApiService.signUp(user)
     .subscribe(newUser => {console.log("here", newUser)
     sessionStorage.setItem('token', newUser.token)
-<<<<<<< HEAD
-    sessionStorage.setItem("userId", newUser.user.id);
-    this.routeToHome()
-    alert('user created')})
-=======
     this.routeToHome()
     })
->>>>>>> 4502dfffae63ca68f94e36d25f4e7956ae96f861
   }
 
   login(emails, passwords)

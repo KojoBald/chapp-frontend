@@ -18,7 +18,8 @@ import { Stepper } from './components/auth/stepper/stepper.component';
 import { ManageUsersComponent } from './components/modals/manage-users/manage-users.component';
 import { UpdateChannelComponent } from './components/modals/update-channel/update-channel.component';
 import { DeleteChannelComponent } from './components/modals/delete-channel/delete-channel.component';
-import { UpdateProfileComponent } from './components/modals/update-profile/update-profile.component'
+import { UpdateProfileComponent } from './components/modals/update-profile/update-profile.component';
+import { EditMessageComponent } from './components/modals/edit-message/edit-message.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { UpdateProfileComponent } from './components/modals/update-profile/updat
     ManageUsersComponent,
     UpdateChannelComponent,
     DeleteChannelComponent,
-    UpdateProfileComponent
+    UpdateProfileComponent,
+    EditMessageComponent
   ],
   imports: [
     BrowserModule,
@@ -47,6 +49,6 @@ import { UpdateProfileComponent } from './components/modals/update-profile/updat
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [CreateChannelComponent, ManageUsersComponent, UpdateChannelComponent, DeleteChannelComponent, UpdateProfileComponent]
+  entryComponents: [EditMessageComponent, CreateChannelComponent, ManageUsersComponent, UpdateChannelComponent, DeleteChannelComponent, UpdateProfileComponent]
 })
 export class AppModule { }
