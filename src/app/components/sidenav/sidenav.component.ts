@@ -14,7 +14,7 @@ import { ApiService } from '../../services/api.service';
   styleUrls: ['./sidenav.component.css']
 })
 export class SidenavComponent {
-  private id = sessionStorage.getItem("userId");
+  private id = sessionStorage.getItem("userId"); 
 
   ngOnInit() 
   {this.getmessageSender(this.id)}
@@ -22,7 +22,7 @@ export class SidenavComponent {
   getmessageSender(id)
   {
     this.ApiService.getmessageSender(id)
-    .subscribe(sender => console.log(sender))
+    .subscribe(sender => console.log(sender)) 
   }
 
   routeProfile(){

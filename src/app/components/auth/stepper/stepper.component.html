@@ -1,55 +1,5 @@
-<mat-horizontal-stepper [linear]="isLinear" #stepper>
-  <mat-step [stepControl]="firstFormGroup">
-    <form [formGroup]="firstFormGroup">
-      <ng-template matStepLabel>First Name</ng-template>
-      <mat-form-field>
-        <input matInput #first placeholder="First name" formControlName="firstCtrl" required>
-      </mat-form-field> 
-      <div>
-        <button mat-button matStepperNext>Next</button>
-      </div>
-    </form>
-  </mat-step>
-
-  <mat-step [stepControl]="FormGroup">
-      <form [formGroup]="FormGroup">
-        <ng-template matStepLabel>Last name</ng-template>
-        <mat-form-field>
-          <input matInput #last placeholder="Last name" formControlName="Ctrl" required>
-        </mat-form-field>
-        <div>
-          <button mat-button matStepperNext>Next</button>
-        </div>
-      </form>
-    </mat-step>
-
-  <mat-step [stepControl]="secondFormGroup">
-    <form [formGroup]="secondFormGroup">
-      <ng-template matStepLabel>Enter an email address</ng-template>
-      <mat-form-field>
-        <input matInput #email placeholder="Email" formControlName="secondCtrl" required>
-      </mat-form-field>
-      <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
-      </div>
-    </form>
-  </mat-step>
-
-  <mat-step [stepControl]="thirdFormGroup">
-    <form [formGroup]="thirdFormGroup">
-      <ng-template matStepLabel>Pick a username</ng-template>
-      <mat-form-field>
-        <input matInput placeholder="Username" formControlName="thirdCtrl" required>
-      </mat-form-field>
-      <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
-      </div>
-    </form>
-  </mat-step>
-
-  <mat-step [stepControl]="fourthFormGroup">
+<mat-horizontal-stepper>
+<mat-step [stepControl]="fourthFormGroup">
       <form [formGroup]="fourthFormGroup">
         <ng-template matStepLabel>Enter a password</ng-template>
         <mat-form-field>

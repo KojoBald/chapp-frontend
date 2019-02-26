@@ -9,6 +9,7 @@ import { SideUser } from '../models/sidebarUser';
 import { Channel } from '../models/channel';
 import { Message } from '../models/Message';
 import { UserLogin } from '../models/UserLogin';
+import { UserUpdate} from '../models/userUpdate';
 
 
  const LoginOptions =
@@ -24,7 +25,7 @@ const httpOptions =
   headers: new HttpHeaders(
     {
       "Content-Type": "application/json",
-      "Authorization" : sessionStorage.getItem("token")
+      "Authorization" : sessionStorage.getItem("token") 
     })
 }
 
@@ -61,27 +62,27 @@ export class ApiService
     .pipe(catchError(this.handleError("Fetched")),tap(user => {return user}))
   }
 
-  updateUser(user: User): any
+  updateUser(user: UserUpdate, id: string): any
   {
-    return this.http.put(`${this.URL}/user/:id`, user, httpOptions)
+    return this.http.put<UserUpdate>(`${this.URL}/user/${id}`, user, httpOptions)
     .pipe(catchError(this.handleError('updateFetch')),tap(user => {return user}))
   }
 
   deleteUser(id: number): any
   {
-    return this.http.delete(`${this.URL}/user/:id`, httpOptions)
+    return this.http.delete(`${this.URL}/user/${id}`, httpOptions)
     .pipe(catchError(this.handleError('deleteFetched')),tap(user => {return user}))
   }
 
-  getUser(): any
+  getUser(id: number): any
   {
-    return this.http.get<User>(`${this.URL}/user/:id`, httpOptions)
+    return this.http.get<User>(`${this.URL}/user/${id}`, httpOptions)
     .pipe(catchError(this.handleError('getChannelFetch')),tap(user => {return user}))
   }
 
-  getUsersChannels(): any
+  getUsersChannels(id: number): any
   {
-    return this.http.get<Channel>(`${this.URL}/:id/channels`, httpOptions)
+    return this.http.get<Channel>(`${this.URL}/${id}/channels`, httpOptions)
     .pipe(catchError(this.handleError('getChannelFetch')),tap(user => {return user}))
   }
 
@@ -95,27 +96,27 @@ export class ApiService
     .pipe(catchError(this.handleError('createFetch')),tap(user => {return user}))
   }
 
-  getChannel(): any
+  getChannel(id): any
   {
-    return this.http.get<Channel>(`${this.URL}/channel/:id`, httpOptions)
+    return this.http.get<Channel>(`${this.URL}/channel/${id}`, httpOptions)
     .pipe(catchError(this.handleError('getChannelFetch')),tap(user => {return user}))
   }
 
-  updateChannel(user: Channel): any
+  updateChannel(user: Channel, id: number): any
   {
-    return this.http.put<Channel>(`${this.URL}/channel/:id`, user, httpOptions)
+    return this.http.put<Channel>(`${this.URL}/channel/${id}`, user, httpOptions)
     .pipe(catchError(this.handleError('updateChannelFetch')),tap(user => {return user}))
   }
 
   deleteChannel(id: number): any
   {
-    return this.http.delete<Channel>(`${this.URL}/channel/:id`, httpOptions)
+    return this.http.delete<Channel>(`${this.URL}/channel/${id}`, httpOptions)
     .pipe(catchError(this.handleError('DeleteChannelFetch')),tap(user => {return user}))
   }
 
   getChannelUsers(id: number): any
   {
-    return this.http.get<Channel>(`${this.URL}/channel/:id/users`, httpOptions)
+    return this.http.get<Channel>(`${this.URL}/channel/${id}/users`, httpOptions)
     .pipe(catchError(this.handleError('getChannelUserFetch')),tap(user => {return user}))
   }
 
@@ -135,15 +136,15 @@ export class ApiService
    .pipe(catchError(this.handleError('inviteChannelFetch')),tap(user => {return user}))
  }
 
- updateMessage(user: Message): any
+ updateMessage(user: Message, id: number): any
   {
-    return this.http.put<Message>(`${this.URL}/user/message/:id`, user, httpOptions)
+    return this.http.put<Message>(`${this.URL}/user/message/${id}`, user, httpOptions)
     .pipe(catchError(this.handleError('updateChannelFetch')),tap(user => {return user}))
   }
 
   deleteDM(id: number): any
   {
-    return this.http.delete<Message>(`${this.URL}/user/message/:id`, httpOptions)
+    return this.http.delete<Message>(`${this.URL}/user/message/${id}`, httpOptions)
     .pipe(catchError(this.handleError('DeleteChannelFetch')),tap(user => {return user}))
   }
 
