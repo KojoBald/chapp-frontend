@@ -9,6 +9,7 @@ import { SideUser } from '../models/sidebarUser';
 import { Channel } from '../models/channel';
 import { Message } from '../models/Message';
 import { UserLogin } from '../models/UserLogin';
+import { UserUpdate} from '../models/userUpdate';
 
 
  const LoginOptions =
@@ -24,7 +25,7 @@ const httpOptions =
   headers: new HttpHeaders(
     {
       "Content-Type": "application/json",
-      "Authorization" : sessionStorage.getItem("token")
+      "Authorization" : sessionStorage.getItem("token") 
     })
 }
 
@@ -61,9 +62,9 @@ export class ApiService
     .pipe(catchError(this.handleError("Fetched")),tap(user => {return user}))
   }
 
-  updateUser(user: User, id: number): any
+  updateUser(user: UserUpdate, id: string): any
   {
-    return this.http.put(`${this.URL}/user/${id}`, user, httpOptions)
+    return this.http.put<UserUpdate>(`${this.URL}/user/${id}`, user, httpOptions)
     .pipe(catchError(this.handleError('updateFetch')),tap(user => {return user}))
   }
 
