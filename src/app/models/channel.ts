@@ -1,8 +1,8 @@
-import { User } from './user'
+import { User } from './User'
 
-export class Channel
-{
-    name: string;
-    users: User[];
-    admin_id: number;
+export class Channel {
+    id?: number;
+    name?: string;
+    users?: User[];
+    admin?: number;
 }

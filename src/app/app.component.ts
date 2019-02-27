@@ -13,6 +13,10 @@ export class AppComponent implements OnInit {
   constructor(private router: Router) { }
     
   ngOnInit() {
-    this.router.navigate(['auth']);
+    if(sessionStorage.getItem('token')) {
+      this.router.navigateByUrl('');
+    } else {
+      this.router.navigateByUrl('auth')
+    }
   }
 }

@@ -1,8 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from '../../services/api.service';
-import { User } from '../../models/user';
-import { UserLogin} from '../../models/UserLogin';
+import { User } from '../../models/User';
 
 
 @Component({
@@ -28,34 +27,20 @@ export class AuthComponent
       alert("your passwords do not match");
       return
     }
-    let user: User = 
-    {
-      first: first,
-      last: last,
-      username: username,
-      email: email,
-      password: password
-    }
-    this.ApiService.signUp(user)
-    .subscribe(newUser => {console.log(newUser)
-    sessionStorage.setItem('token', newUser.token)
-    this.routeToHome()
-    })
+    this.ApiService.signUp({ first, last, username, email, password })
+      .subscribe(() => this.routeToHome())
   }
 
   login(emails, passwords)
   {
     event.preventDefault();
-    let login: UserLogin =
+    let login: User =
     {
       email: emails,
       password: passwords
     }
     this.ApiService.login(login)
-    .subscribe(data => {console.log(data)
-    sessionStorage.setItem('token', data.token)
-    this.routeToHome()
-    })
+      .subscribe(() => this.routeToHome())
   }
 
   routeToHome()

@@ -1,24 +1,27 @@
-<!--Overall Message Container-->
-    <div id='messageContainer'>
-
-        <b style='color:red; text-align:center; font-size:20px;'>Channel</b>
-
-  <!--Message Boxes-->
-  <app-message-box></app-message-box>
-  <app-message-box></app-message-box>
-  <app-message-box></app-message-box>
-  <app-message-box></app-message-box>
-  <app-message-box></app-message-box>
-  <app-message-box></app-message-box>
-
-  </div>
+<div id="channel-layout">
+  <div id='messageContainer'>
+    <ng-container *ngIf="(messages.length > 0) else noMessages">
+      <ng-container *ngFor="let message of messages">
+            <app-message-box [message]="message" (onMessageDelete)="onMessageDelete($event)"></app-message-box>
+      </ng-container>
+    </ng-container>
     
-  <!--text box-->
-    <div class='sendMessageBox'>
+    <ng-template #noMessages>
+      <div style="padding: 30px">
+        <h2>Looks like this channel doesn't have any messages yet</h2>
+        <p>Go ahead and send one</p>
+      </div>
+    </ng-template>
+  </div>
+      
+    <!--text box-->
+  <div class='sendMessageBox'>
       <input type='text' style='
-      font-size:20px;
-      flex: 1 1 auto;
-      background-color:rgb(65, 65, 65);
-      border: 1px solid yellow;'>
-      <button class='sendButton'>Send</button>
-    </div>
+        font-size:20px;
+        flex: 1 1 auto;
+        background-color:rgb(65, 65, 65);
+        border: 1px solid yellow;' 
+        [(ngModel)]="messageInput">
+      <button class='sendButton' (click)="sendMessage()">Send</button>
+  </div>
+</div>

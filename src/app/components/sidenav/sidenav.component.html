@@ -1,42 +1,38 @@
-<div class='centerNav'>
-  <h1>
-  <img src='../../assets/fake_logo.png' height=30vw>
-  Chapp
-</h1>
+<div id="sidenav__content">
+  <div class='centerNav'>
+    <h1 style="cursor: pointer" routerLink="/channel/1">
+      <img src='../../assets/fake_logo.png' height=30vw>
+      Chapp
+    </h1>
+  </div>
 
-<!--Global Button-->
-<button class='navButton' (click)="routeChannel()">Global</button>
+  <h2>
+    Channels
+    <button class="navButton" (click)="openCreateChannelDialog()">+</button>
+  </h2>
+  <ul>
+    <li *ngFor="let channel of channels" [routerLink]="['/channel', channel.id]" style="cursor: pointer">
+      {{ channel.name }}
+    </li>
+  </ul>
+
+  <h2>Direct Messages</h2>
+  <mat-form-field>
+    <input matInput
+      type="text" 
+      name="userSearch"
+      placeholder="search for users"
+      (input)="searchForUsers($event)"
+      [matAutocomplete]="auto">
+  </mat-form-field>
+  <mat-autocomplete #auto="matAutocomplete" (optionSelected)="goToDm($event)" [displayWith]="autocompleteDisplay">
+      <mat-option *ngFor="let user of userOptions" [value]="user">
+        <span style="margin-right: 5px; font-weight: 600">{{ user.first + ' ' + user.last }}</span><span style="font-style: italic">@{{ user.username }}</span>
+      </mat-option>
+    </mat-autocomplete>
+  <ul>
+    <li *ngFor="let user of conversations" [routerLink]="['/dm', user.id]" style="cursor: pointer">
+      {{ user.username }}
+    </li>
+  </ul>
 </div>
-
-<!--Channels list-->
-<h2>Channels</h2>
-<hr/>
-<ul>
-  <li><a (click)="routeChannel()" class='sideNavTxt'>Option 1</a></li>
-  <li><a (click)="routeChannel()" class='sideNavTxt'>Option 2</a></li>
-  <li><a (click)="routeChannel()" class='sideNavTxt'>Option 3</a></li>
-</ul>
-
-<br><div class='centerNav'>
-
-<!--+ Channel Button-->
-<button class='navButton' (click)="openCreateChannelDialog()">+ Channel</button>
-</div>
-
-<!--Direct Messages list-->
-<h2>Direct Messages</h2>
-<hr/>
-<ul>
-  <li><a (click)="routeDm()" class='sideNavTxt'>Option 1</a></li>
-  <li><a (click)="routeDm()" class='sideNavTxt'>Option 2</a></li>
-  <li><a (click)="routeDm()" class='sideNavTxt'>Option 3</a></li>
-</ul>
-
-<!--Admin Controls-->
-<h2>Admin Controls</h2>
-<hr/>
-<ul>
-  <li><a (click)="openManageUsers()" class='sideNavTxt'>Manage Users</a></li>
-  <li><a (click)="openUpdateChannel()" class='sideNavTxt'>Update Channel</a></li>
-  <li><a (click)="openDeleteChannel()" class='sideNavTxt'>Delete Channel</a></li>
-</ul>

@@ -18,7 +18,8 @@ import { Stepper } from './components/auth/stepper/stepper.component';
 import { ManageUsersComponent } from './components/modals/manage-users/manage-users.component';
 import { UpdateChannelComponent } from './components/modals/update-channel/update-channel.component';
 import { DeleteChannelComponent } from './components/modals/delete-channel/delete-channel.component';
-import { UpdateProfileComponent } from './components/modals/update-profile/update-profile.component'
+import { UpdateProfileComponent } from './components/modals/update-profile/update-profile.component';
+import { DirectMessageBoxComponent } from './components/direct-message-box/direct-message-box.component'
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { UpdateProfileComponent } from './components/modals/update-profile/updat
     ManageUsersComponent,
     UpdateChannelComponent,
     DeleteChannelComponent,
-    UpdateProfileComponent
+    UpdateProfileComponent,
+    DirectMessageBoxComponent
   ],
   imports: [
     BrowserModule,

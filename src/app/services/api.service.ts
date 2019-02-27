@@ -1,40 +1,30 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
+import axios from 'axios';
 
 import {Observable, of} from "rxjs";
 import {catchError, map, tap} from "rxjs/operators";
 
-import { User } from '../models/user';
-import { Channel } from '../models/channel';
-import { Message } from '../models/Message';
-import { UserLogin } from '../models/UserLogin';
+import { User } from '../models/User';
+import { Channel } from '../models/Channel';
+import { ChannelMessage } from '../models/ChannelMessage';
+import { DirectMessage } from '../models/DirectMessage';
 
-// const httpOptions =
-// {
-//   headers: new HttpHeaders(
-//     {
-//       "Content-Type": "application/json",
-//     })
-// }
-
-const httpOptions =
-{
-  headers: new HttpHeaders(
-    {
+let httpOptions = {
+  headers: new HttpHeaders({
       "Content-Type": "application/json",
-      "Authorization" : sessionStorage.getItem("token")
+      "Authorization" : sessionStorage.getItem("token") || ''
     })
 }
 
 @Injectable({
   providedIn: 'root'
 })
-export class ApiService 
-{
+export class ApiService {
   private URL: string = 'http://localhost:8080' /*'https://www.chapp-backend.herokuapp.com'*/;
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-      console.error(error);
+      console.error(operation, error);
       return of(result as T);
     };
   }
@@ -45,140 +35,227 @@ export class ApiService
   /***************************************************************
    * User
    ***************************************************************/
-  signUp(user: User): any
-  {
-    return this.http.post<User>(`${this.URL}/user/`, user, httpOptions)
-    .pipe(catchError(this.handleError("signUp")),tap(user => {return user}))
+  signUp(user: User) {
+    return this.http.post<HasUser & HasToken>(`${this.URL}/user/`, user, httpOptions)
+      .pipe(
+        catchError(this.handleError<HasToken & HasUser>('signup')),
+        tap(({ token, user }) => {
+          _setSession(token, user.id)
+          return user
+        })
+      )
   }
 
-  login(user: UserLogin): any
-  {
-    return this.http.post<UserLogin>(`${this.URL}/user/login`, user, httpOptions)
-    .pipe(catchError(this.handleError("Fetched")),tap(user => {return user}))
+  login(user: User) {
+    return this.http.put<HasUser & HasToken>(`${this.URL}/user/login`, user, httpOptions)
+      .pipe(
+        catchError(this.handleError<HasToken & HasUser>("Fetched")),
+        tap(({ token, user }) => {
+          _setSession(token, user.id)
+          return user
+        })
+      )
   }
 
-  updateUser(user: User): any
-  {
-    return this.http.put(`${this.URL}/user/:id`, user, httpOptions)
-    .pipe(catchError(this.handleError('updateFetch')),tap(user => {return user}))
+  updateUser(user: User) {
+    return this.http.put<HasUser>(`${this.URL}/user/${user.id}`, user, httpOptions)
+      .pipe(
+        catchError(this.handleError('updateFetch')),
+        tap(user => user)
+      )
   }
 
-  deleteUser(id: number): any
-  {
-    return this.http.delete(`${this.URL}/user/:id`, httpOptions)
-    .pipe(catchError(this.handleError('deleteFetched')),tap(user => {return user}))
+  deleteUser(userId: number) {
+    return this.http.delete(`${this.URL}/user/${userId}`, httpOptions)
+      .pipe(
+        catchError(this.handleError('deleteFetched')),
+        tap(user => user)
+      )
   }
 
-  getUser(): any
-  {
-    return this.http.get<User>(`${this.URL}/user/:id`, httpOptions)
-    .pipe(catchError(this.handleError('getChannelFetch')),tap(user => {return user}))
+  getUser(userId: number) {
+    return this.http.get<User>(`${this.URL}/user/${userId}`, httpOptions)
+      .pipe(
+        catchError(this.handleError<User>('getUserFetch')),
+        tap(user => user)
+      )
   }
 
-  getUsersChannels(): any
-  {
-    return this.http.get<User>(`${this.URL}/user/:id/channels`, httpOptions)
-    .pipe(catchError(this.handleError('getChannelFetch')),tap(user => {return user}))
+  getUsersChannels(userId: number) {
+    return this.http.get<Channel[]>(`${this.URL}/user/${userId}/channels`, httpOptions)
+      .pipe(
+        catchError(this.handleError<Channel[]>('getChannelFetch')),
+        tap(user => user)
+      )
   }
 
   searchForUser(query: string) {
     return this.http.get<User[]>(`${this.URL}/user?q=${query}`, httpOptions)
+      .pipe(
+        catchError(this.handleError<User[]>('userSearch')),
+        tap(users => users)
+      )
   }
 
   /***************************************************************
    * Channel
    ***************************************************************/
-  createChannel(user: Channel): any
-  {
-    console.log(user)
-    return this.http.post<Channel>(`${this.URL}/channel/`, user, httpOptions)
-    .pipe(catchError(this.handleError('createFetch')),tap(user => {return user}))
+  createChannel(channel: Channel) {
+    return this.http.post<HasChannel>(`${this.URL}/channel/`, channel, httpOptions)
+      .pipe(
+        catchError(this.handleError<HasChannel>('createFetch')),
+        tap(channel => channel)
+      )
   }
 
-  getChannel(): any
-  {
-    return this.http.get<Channel>(`${this.URL}/channel/:id`, httpOptions)
-    .pipe(catchError(this.handleError('getChannelFetch')),tap(user => {return user}))
+  getChannel(channelId: number) {
+    return this.http.get<Channel>(`${this.URL}/channel/${channelId}`, httpOptions)
+      .pipe(
+        catchError(this.handleError<Channel>('getChannelFetch')),
+        tap(user => user)
+      )
   }
 
-  updateChannel(user: Channel): any
-  {
-    return this.http.put<Channel>(`${this.URL}/channel/:id`, user, httpOptions)
-    .pipe(catchError(this.handleError('updateChannelFetch')),tap(user => {return user}))
+  updateChannel(channel: Channel) {
+    return this.http.put<Channel>(`${this.URL}/channel/${channel.id}`, channel, httpOptions)
+      .pipe(
+        catchError(this.handleError('updateChannelFetch')),
+        tap(user => user)
+      )
   }
 
-  deleteChannel(id: number): any
-  {
-    return this.http.delete<Channel>(`${this.URL}/channel/:id`, httpOptions)
-    .pipe(catchError(this.handleError('DeleteChannelFetch')),tap(user => {return user}))
+  deleteChannel(channelId: number) {
+    return this.http.delete<Channel>(`${this.URL}/channel/${channelId}`, httpOptions)
+      .pipe(
+        catchError(this.handleError('DeleteChannelFetch')),
+        tap(user => user)
+      )
   }
 
-  getChannelUsers(id: number): any
-  {
-    return this.http.get<Channel>(`${this.URL}/channel/:id/users`, httpOptions)
-    .pipe(catchError(this.handleError('getChannelUserFetch')),tap(user => {return user}))
+  getChannelUsers(channelId: number) {
+    return this.http.get<Channel>(`${this.URL}/channel/${channelId}/users`, httpOptions)
+      .pipe(
+        catchError(this.handleError('getChannelUserFetch')),
+        tap(users => users)
+      )
   }
 
-  inviteChannelUsers(user: Channel): any
-  {
-    return this.http.put(`${this.URL}/channel/:id/invite`, user, httpOptions)
-    .pipe(catchError(this.handleError('inviteChannelFetch')),tap(user => {return user}))
+  inviteChannelUsers(userIds: number[], channelId) {
+    return this.http.put(`${this.URL}/channel/${channelId}/invite`, { users: userIds }, httpOptions)
+      .pipe(
+        catchError(this.handleError('inviteChannelFetch')),
+        tap(response => response)
+      )
   }
 
   /**************************************************************
    * UserMessages 
   ***************************************************************/
 
- sendDirectMessage(user: Message): any
- {
-   return this.http.post<Message>(`${this.URL}/user/message/`, user, httpOptions)
-   .pipe(catchError(this.handleError('inviteChannelFetch')),tap(user => {return user}))
+ sendDirectMessage(message: DirectMessage, toUserId: number) {
+   return this.http.post<HasMessage<DirectMessage>>(`${this.URL}/user/${toUserId}/message/`, message, httpOptions)
+    .pipe(
+      catchError(this.handleError<HasMessage<DirectMessage>>('inviteChannelFetch')),
+      tap(response => response)
+    )
  }
 
- updateMessage(user: Message): any
-  {
-    return this.http.put<Message>(`${this.URL}/user/message/:id`, user, httpOptions)
-    .pipe(catchError(this.handleError('updateChannelFetch')),tap(user => {return user}))
+ updateMessage(message: DirectMessage) {
+    return this.http.put(`${this.URL}/user/me/message/${message.id}`, message, httpOptions)
+      .pipe(
+        catchError(this.handleError('updateChannelFetch')),
+        tap(response => response)
+      )
   }
 
-  deleteDM(id: number): any
-  {
-    return this.http.delete<Message>(`${this.URL}/user/message/:id`, httpOptions)
-    .pipe(catchError(this.handleError('DeleteChannelFetch')),tap(user => {return user}))
+  deleteDM(messageId: number) {
+    return this.http.delete(`${this.URL}/user/me/message/${messageId}`, httpOptions)
+      .pipe(
+        catchError(this.handleError('DeleteChannelFetch')),
+        tap(response => response)
+      )
   }
 
-  getDMs(id: number): any
-  {
-    return this.http.get<Message>(`${this.URL}/user/message/all/:userId`, httpOptions)
-    .pipe(catchError(this.handleError('getChannelUserFetch')),tap(user => {return user}))
+  getDMs(userId: number) {
+    return this.http.get<DirectMessage[]>(`${this.URL}/user/${userId}/message/all/`, httpOptions)
+      .pipe(
+        catchError(this.handleError<DirectMessage[]>('getChannelUserFetch')),
+        tap(response => response)
+      )
+  }
+
+  getConversations() {
+    console.log('getting conversations', sessionStorage.getItem('token'))
+    return this.http.get<User[]>(`${this.URL}/user/me/message`, httpOptions)
+      .pipe(
+        catchError(this.handleError<User[]>('getConversations')),
+        tap(response => response)
+      )
   }
 
   /**************************************************************
    * ChannelMessages
   ***************************************************************/
 
-  sendChannelMessage(user: Message): any
-  {
-   return this.http.post<Message>(`${this.URL}/user/`, user, httpOptions)
-   .pipe(catchError(this.handleError('inviteChannelFetch')),tap(user => {return user}))
+  sendChannelMessage(channelId: number, message: ChannelMessage) {
+    return this.http.post<HasMessage<ChannelMessage>>(`${this.URL}/channel/${channelId}/message`, message, httpOptions)
+      .pipe(
+        catchError(this.handleError<HasMessage<ChannelMessage>>('inviteChannelFetch')),
+        tap(response => response)
+      )
   }
 
-  updateChannelMessage(user: Message): any
-  {
-    return this.http.put<Message>(`${this.URL}/user/`, user, httpOptions)
-    .pipe(catchError(this.handleError('updateChannelFetch')),tap(user => {return user}))
+  updateChannelMessage(channelId: number, message: ChannelMessage) {
+    return this.http.put(`${this.URL}/channel/${channelId}/message/${message.id}`, message, httpOptions)
+      .pipe(
+        catchError(this.handleError('updateChannelFetch')),
+        tap(response => response)
+      )
   }
 
-  deleteChannelMessage(id: number): any
-  {
-    return this.http.delete<Message>(`${this.URL}/user/`, httpOptions)
-    .pipe(catchError(this.handleError('DeleteChannelFetch')),tap(user => {return user}))
+  deleteChannelMessage(channelId: number, messageId: number) {
+    return this.http.delete(`${this.URL}/channel/${channelId}/message/${messageId}`, httpOptions)
+      .pipe(
+        catchError(this.handleError('DeleteChannelFetch')),
+        tap(response => response)
+      )
   }
 
-  getChannelMessages(id: number): any
-  {
-    return this.http.get<Message>(`${this.URL}/user/`, httpOptions)
-    .pipe(catchError(this.handleError('getChannelUserFetch')),tap(user => {return user}))
+  getChannelMessages(channelId: number) {
+    return this.http.get<ChannelMessage[]>(`${this.URL}/channel/${channelId}/message/all`, httpOptions)
+      .pipe(
+        catchError(this.handleError<ChannelMessage[]>('getChannelUserFetch')),
+        tap(response => response)
+      )
+  }
+
+  getUpdatedChannelMessages(channelId: number, updatedAt) {
+    return this.http.get<ChannelMessage[]>(`${this.URL}/channel/${channelId}/message?updatedAt=${updatedAt}`, httpOptions)
+      .pipe(
+        catchError(this.handleError<ChannelMessage[]>('getUpdatedMessageFetc')),
+        tap(response => response)
+      )
   }
 }
- 
+
+function _setSession(token, userId) {
+  sessionStorage.setItem('token', token);
+  sessionStorage.setItem('userId', userId);
+  httpOptions.headers = new HttpHeaders().set('Authorization', token).set('Content-Type', 'application/json')
+}
+
+export interface HasToken {
+  token: string
+}
+
+export interface HasUser {
+  user: User
+}
+
+export interface HasMessage<T> {
+  message: T;
+}
+
+export interface HasChannel {
+  channel: Channel;
+}

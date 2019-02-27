@@ -1,31 +1,23 @@
-    <!--Individual Message Container-->
-    <div class='messageBox'>
-      <div class='messageImgWrapper'>
-        
-        <!--Profile Photo-->
-        <img src='../../assets/testImg.jpeg' style='
-        width:80px;
-        height:80px;
-        border: 0px solid black;
-        border-radius:100%;
-        object-fit:cover;'></div>
-        <div class='messageTextBox'>
-
-      <!--Username-->
-      <h3>Username</h3>
-
-      <!--Message-->
-      Text Text Text Text
-      <br> Text Text Text Text
-
-      <!--Edit Message Button-->
-      <a href='#' class='editText'>Edit</a>
+<div class='message'> 
+  <div class='message__user-img'>
+    <img [src]="user.image" [alt]="user.username">
+  </div>
+  <div class="message__content">
+    <div class="message__details">
+      <h3>{{ user.username }}</h3>
+      <span class="details__date">
+        {{ message.createdAt | date:'short' }}
+      </span>
+      <span class="details__edit-date" *ngIf="message.createdAt !== message.updatedAt">
+        (edited {{ message.updatedAt | date:'short' }})
+      </span>
+      <div class="message__operations" *ngIf="isOwn">
+        <mat-icon (click)="isEditing = true" *ngIf="!isEditing">edit</mat-icon>
+        <mat-icon (click)="updateMessage()" *ngIf="isEditing">save</mat-icon>
+        <mat-icon (click)="deleteMessage()">delete</mat-icon>
+      </div>
     </div>
-
-      <!--Delete Image-->
-      <mat-icon style='
-      color:grey;
-      margin-top:50px;
-      float:right;
-      '>delete</mat-icon>
-    </div>
+    <div class="content__text" *ngIf="!isEditing" #text>{{ message.text }}</div>
+    <div class="content__text" *ngIf="isEditing" contenteditable="true" #text>{{ message.text }}</div>
+  </div>
+</div>

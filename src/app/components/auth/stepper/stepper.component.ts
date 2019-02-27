@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { ApiService } from '../../../services/api.service';
-import { User } from '../../../models/user';
+import { User } from '../../../models/User';
 
 /**
  * @title Stepper overview
@@ -59,6 +59,8 @@ export class Stepper implements OnInit {
       password: password
     }
     this.ApiService.signUp(user)
-    .subscribe(newUser => console.log(newUser), sessionStorage.setItem("token", ""));
+      .subscribe(({ user, token }) => {
+        
+      });
   }
 }

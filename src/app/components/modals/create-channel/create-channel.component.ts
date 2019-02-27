@@ -2,11 +2,12 @@ import { Component, ViewChild } from '@angular/core';
 import { MatDialogRef, MatChipInputEvent, MatSnackBar, MatAutocompleteSelectedEvent } from '@angular/material';
 import { ENTER, COMMA } from '@angular/cdk/keycodes';
 
-import { Channel } from '../../../models/channel';
+import { Channel } from '../../../models/Channel';
 import { ApiService } from '../../../services/api.service';
 import { Router } from '@angular/router'
 
 import _debounce from 'lodash.debounce'
+import { User } from 'src/app/models/User';
 
 @Component({
   selector: 'app-create-channel',
@@ -17,7 +18,7 @@ export class CreateChannelComponent {
   loading: boolean = false;
   name: string = '';
   users: any[] = [];
-  userOptions: any[] = [];
+  userOptions: User[] = [];
 
   @ViewChild('huh') usersInput;
 
@@ -33,7 +34,7 @@ export class CreateChannelComponent {
     this.api.createChannel({ 
       name: this.name,
       users: this.users.map(user => user.id),
-      admin_id: null
+      admin: null
     }).subscribe(({ channel }) => {
       this.loading = false;
       this.dialogRef.close();
@@ -59,7 +60,6 @@ export class CreateChannelComponent {
   }
 
   searchForUsers = _debounce(({ target: { value }}) => {
-    console.log('searching', value)
     this.api.searchForUser(value)
       .subscribe(users => {
         this.userOptions = users;

@@ -1,3 +1,8 @@
+#sidenav__content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
 .centerNav {
     text-align:center;
 }
@@ -7,8 +12,9 @@
     border: 1px solid yellow;
     padding-left: 3%;
     color:white;
-    font-size: 30px;
+    font-size: 15px;
     font-family: 'Chakra Petch', sans-serif;
+    cursor: pointer;
 }
 li {
     color:white;
@@ -17,8 +23,17 @@ li {
     margin: 3px;
 }
 ul {
-    height:45px;
     overflow: auto;
+    margin: 0;
+    flex: 1 1 auto;
+}
+h2 {
+    border-bottom: 1px solid white;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: space-between;
 }
 
 a.sideNavTxt:link { color: grey; text-decoration:none; font-weight:normal; }

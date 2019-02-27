@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material'
 import { UpdateProfileComponent } from '../modals/update-profile/update-profile.component';
+import { HeaderService } from 'src/app/services/header.service';
 
 
 @Component({
@@ -15,13 +16,13 @@ export class LayoutComponent implements OnInit, OnDestroy {
   private _screenSizeSubscription: Subscription;
   screen: ScreenSize = ScreenSize.Web;
 
-  constructor(private _screenSize: ScreenSizeService, private router: Router, private dialog: MatDialog) {}
+  constructor(private _screenSize: ScreenSizeService, private router: Router, private dialog: MatDialog, private headerService: HeaderService) {}
 
   ngOnInit() {
     this._screenSizeSubscription = this._screenSize.subscribe(screen => {
       this.screen = screen;
     });
-    this.router.navigateByUrl('/channel/:id');
+    this.router.navigateByUrl('/channel/1');
   }
 
   ngOnDestroy() {
@@ -31,15 +32,11 @@ export class LayoutComponent implements OnInit, OnDestroy {
     let dialogRef = this.dialog.open(UpdateProfileComponent, {
       width: '50vw'
     });
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('closed', result);
-    })
   }
 
   Logout()
   {
-    sessionStorage.setItem('token', '');
-    // this.router.navigate(['/auth'])
+    sessionStorage.clear();
     location.reload();
   }
 }
