@@ -9,12 +9,12 @@ import { ChannelMessage } from '../models/ChannelMessage';
 export class PollingService {
   public _pollInterval
   public _id: number;
-  private _type: PollType;
-  private _lastPoll: Date
-  private _subscribers: Subscriber<ChannelMessage[]>[] = [];
-  constructor(private api: ApiService) { }
+  public _type: PollType;
+  public _lastPoll: Date
+  public _subscribers: Subscriber<ChannelMessage[]>[] = [];
+  constructor(public api: ApiService) { }
 
-  private startPolling() {
+  public startPolling() {
     this._lastPoll = new Date();
     this._pollInterval = setInterval(() => {
       if(this._type === PollType.Channel) {
@@ -27,7 +27,7 @@ export class PollingService {
     }, 1000);
   }
 
-  private stopPolling() {
+  public stopPolling() {
     clearInterval(this._pollInterval);
   }
 

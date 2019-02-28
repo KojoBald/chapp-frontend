@@ -11,6 +11,7 @@ export class UpdateProfileComponent {
   loading: boolean = false;
   readonly userKeySeparators = [ENTER, COMMA];
   name: string = '';
+  photo: string = '';
   users: any[] = [];
 
   constructor(public dialogRef: MatDialogRef<UpdateProfileComponent>, public snackBar: MatSnackBar) { }

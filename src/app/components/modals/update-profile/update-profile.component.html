@@ -5,13 +5,13 @@
       <mat-horizontal-stepper>
           <mat-step label="Username">
               <mat-form-field>
-                  <input matInput name="Username" placeholder="Username" [(ngModel)]="Username" cdkFocusInitial>
+                  <input matInput name="Username" placeholder="Username" [(ngModel)]="name" cdkFocusInitial>
               </mat-form-field><br>
             <button mat-raised-button matStepperNext type="button">Next</button>
           </mat-step>
           <mat-step label="Change Photo">
               <mat-form-field>
-                  <input matInput name="Photo" placeholder="Photo" [(ngModel)]="Photo" cdkFocusInitial>
+                  <input matInput name="Photo" placeholder="Photo" [(ngModel)]="photo" cdkFocusInitial>
               </mat-form-field><br>
               <i style= 'font-size:12px;'>(Make sure to use the image address)</i><br/><br/>
               <button mat-raised-button matStepperPrevious type="button">Previous</button>

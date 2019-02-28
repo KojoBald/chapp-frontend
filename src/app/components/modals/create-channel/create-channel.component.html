@@ -41,7 +41,7 @@
   </div>
   <div mat-dialog-actions>
     <button mat-raised-button color="warn" (click)="dialogRef.close()">Cancel</button>
-    <button mat-raised-button color="primary" (click)="createChannel(name.value)">Ok</button>
+    <button mat-raised-button color="primary" (click)="createChannel()">Ok</button>
   </div>
 
   <div class="loading-spinner" *ngIf="loading">
