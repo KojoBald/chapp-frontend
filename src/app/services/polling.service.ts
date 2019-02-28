@@ -7,8 +7,8 @@ import { ChannelMessage } from '../models/ChannelMessage';
   providedIn: 'root'
 })
 export class PollingService {
-  private _pollInterval
-  private _id: number;
+  public _pollInterval
+  public _id: number;
   private _type: PollType;
   private _lastPoll: Date
   private _subscribers: Subscriber<ChannelMessage[]>[] = [];

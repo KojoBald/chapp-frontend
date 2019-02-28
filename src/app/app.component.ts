@@ -10,7 +10,7 @@ import { Router } from '@angular/router'
 export class AppComponent implements OnInit {
   title = 'chapp-app';
 
-  constructor(private router: Router) { }
+  constructor(public router: Router) { }
     
   ngOnInit() {
     if(sessionStorage.getItem('token')) {

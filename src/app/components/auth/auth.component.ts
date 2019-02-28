@@ -13,7 +13,7 @@ export class AuthComponent
 {
   whichForm: string = 'toggle'; 
 
-  constructor(private ApiService: ApiService, private router: Router) {}
+  constructor(public ApiService: ApiService, public router: Router) {}
   
 
   ngOnInit()

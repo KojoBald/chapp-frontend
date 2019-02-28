@@ -21,15 +21,15 @@ let httpOptions = {
   providedIn: 'root'
 })
 export class ApiService {
-  private URL: string = 'https://www.chapp-backend.herokuapp.com';
-  private handleError<T> (operation = 'operation', result?: T) {
+  public URL: string = 'https://www.chapp-backend.herokuapp.com';
+  public handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(operation, error);
       return of(result as T);
     };
   }
 
-  constructor(private http: HttpClient) {}
+  constructor(public http: HttpClient) {}
 
 
   /***************************************************************

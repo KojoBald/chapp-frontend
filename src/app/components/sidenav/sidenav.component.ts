@@ -20,7 +20,7 @@ export class SidenavComponent implements OnInit {
   conversations: any[] = [];
   userOptions: User[] = [];
 
-  constructor(private dialog: MatDialog, private router: Router, private api: ApiService) { }
+  constructor(public dialog: MatDialog, public router: Router, public api: ApiService) { }
 
   ngOnInit() {
     this.api.getUsersChannels(parseInt(sessionStorage.getItem('userId')))

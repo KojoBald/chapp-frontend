@@ -6,7 +6,7 @@ import { Channel } from '../models/Channel';
   providedIn: 'root'
 })
 export class HeaderService {
-  private _subscribers: Subscriber<String>[] = [];
+  public _subscribers: Subscriber<String>[] = [];
   title: string;
   channel: Channel | null;
   isChannelAdmin: boolean = false;

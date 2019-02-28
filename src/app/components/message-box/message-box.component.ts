@@ -16,7 +16,7 @@ export class MessageBoxComponent implements OnInit {
   isEditing: boolean = false;
   isOwn: boolean = false;
 
-  constructor(private api: ApiService) { }
+  constructor(public api: ApiService) { }
 
   ngOnInit() {
     this.api.getUser(this.message.userId)

@@ -7,10 +7,10 @@ import { nextContext } from '@angular/core/src/render3';
   providedIn: 'root'
 })
 export class ScreenSizeService extends Observable<ScreenSize> {
-  private _screenSize: ScreenSize;
-  private _subscribers: Subscriber<ScreenSize>[] = [];
+  public _screenSize: ScreenSize;
+  public _subscribers: Subscriber<ScreenSize>[] = [];
 
-  constructor(private breakpointObserver: BreakpointObserver) {
+  constructor(public breakpointObserver: BreakpointObserver) {
     super((observer) => {
       this._subscribers.push(observer);
       return {
@@ -27,7 +27,7 @@ export class ScreenSizeService extends Observable<ScreenSize> {
       .subscribe(({ matches }) => matches? this._triggerSubscribers(ScreenSize.Web) : null)
   }  
   
-  private _triggerSubscribers(screenSize: ScreenSize) {
+  public _triggerSubscribers(screenSize: ScreenSize) {
     this._subscribers.forEach((sub) => sub.next(screenSize))
   }
 }

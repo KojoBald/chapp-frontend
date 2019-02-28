@@ -13,7 +13,7 @@ export class ManageUsersComponent {
   loading: boolean = false;
   readonly userKeySeparators = [ENTER, COMMA];
 
-  constructor(private dialogRef: MatDialogRef<ManageUsersComponent>, private snackBar: MatSnackBar) { }
+  constructor(public dialogRef: MatDialogRef<ManageUsersComponent>, public snackBar: MatSnackBar) { }
     editUsers() {
     this.loading = true;
     setTimeout(() => {

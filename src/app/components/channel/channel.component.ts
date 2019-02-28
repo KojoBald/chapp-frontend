@@ -15,9 +15,9 @@ export class ChannelComponent implements OnInit, OnDestroy {
   messages: ChannelMessage[] = [];
   messageInput: string = ''
 
-  private _pollInterval;
+  public _pollInterval;
 
-  constructor(private route: ActivatedRoute, private api: ApiService, private headerService: HeaderService) { }
+  constructor(public route: ActivatedRoute, public api: ApiService, public headerService: HeaderService) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {

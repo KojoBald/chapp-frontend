@@ -13,7 +13,7 @@ export class UpdateProfileComponent {
   name: string = '';
   users: any[] = [];
 
-  constructor(private dialogRef: MatDialogRef<UpdateProfileComponent>, private snackBar: MatSnackBar) { }
+  constructor(public dialogRef: MatDialogRef<UpdateProfileComponent>, public snackBar: MatSnackBar) { }
 
   updateUser() {
     this.loading = true;

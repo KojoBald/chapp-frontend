@@ -23,10 +23,10 @@ export class CreateChannelComponent {
   @ViewChild('huh') usersInput;
 
   constructor(
-    private dialogRef: MatDialogRef<CreateChannelComponent>, 
-    private snackBar: MatSnackBar, 
-    private api: ApiService,
-    private router: Router 
+    public dialogRef: MatDialogRef<CreateChannelComponent>, 
+    public snackBar: MatSnackBar, 
+    public api: ApiService,
+    public router: Router 
   ) { }
 
   createChannel() {

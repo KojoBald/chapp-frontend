@@ -11,7 +11,7 @@ export class DeleteChannelComponent {
   loading: boolean = false;
   readonly userKeySeparators = [ENTER, COMMA];
 
-  constructor(private dialogRef: MatDialogRef<DeleteChannelComponent>, private snackBar: MatSnackBar) { }
+  constructor(public dialogRef: MatDialogRef<DeleteChannelComponent>, public snackBar: MatSnackBar) { }
   deleteChannel() {
     this.loading = true;
     setTimeout(() => {

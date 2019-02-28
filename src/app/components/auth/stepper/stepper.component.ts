@@ -20,7 +20,7 @@ export class Stepper implements OnInit {
   fourthFormGroup: FormGroup;
   fifthFormGroup: FormGroup;
 
-  constructor(private _formBuilder: FormBuilder, private ApiService: ApiService) {}
+  constructor(public _formBuilder: FormBuilder, public ApiService: ApiService) {}
 
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({

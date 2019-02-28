@@ -14,10 +14,10 @@ import { UpdateChannelComponent } from '../modals/update-channel/update-channel.
   styleUrls: ['./layout.component.css']
 })
 export class LayoutComponent implements OnInit, OnDestroy {
-  private _screenSizeSubscription: Subscription;
+  public _screenSizeSubscription: Subscription;
   screen: ScreenSize = ScreenSize.Web;
 
-  constructor(private _screenSize: ScreenSizeService, private router: Router, private dialog: MatDialog, private headerService: HeaderService) {}
+  constructor(public _screenSize: ScreenSizeService, public router: Router, public dialog: MatDialog, public headerService: HeaderService) {}
 
   ngOnInit() {
     this._screenSizeSubscription = this._screenSize.subscribe(screen => {

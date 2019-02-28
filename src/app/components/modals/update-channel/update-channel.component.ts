@@ -20,11 +20,11 @@ export class UpdateChannelComponent {
   @ViewChild('huh') usersInput;
 
   constructor(
-    private dialogRef: MatDialogRef<UpdateChannelComponent>,
-    private snackBar: MatSnackBar,
-    private api: ApiService,
-    private router: Router,
-    private headerService: HeaderService
+    public dialogRef: MatDialogRef<UpdateChannelComponent>,
+    public snackBar: MatSnackBar,
+    public api: ApiService,
+    public router: Router,
+    public headerService: HeaderService
   ) { }
 
   updateChannel() {
