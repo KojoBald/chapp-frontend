@@ -20,6 +20,7 @@ export class DirectMessageComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.headerService.setHeaderTitle('loading');
+      this.headerService.setChannel(null);
       this.api.getUser(params.id)
         .subscribe(user => {
           this.user = user;

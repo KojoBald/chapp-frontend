@@ -16,6 +16,9 @@
       <span class="fill-remaining-space"></span>
 
       <!--Profile Icon-->
+      <button mat-button *ngIf="headerService.isChannelAdmin" (click)="openChannelSettings()">
+        <mat-icon>settings</mat-icon>
+      </button>
       <button mat-button [matMenuTriggerFor]="menu">
         <mat-icon>account_circle</mat-icon>
       </button>

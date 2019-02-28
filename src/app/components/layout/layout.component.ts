@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material'
 import { UpdateProfileComponent } from '../modals/update-profile/update-profile.component';
 import { HeaderService } from 'src/app/services/header.service';
+import { UpdateChannelComponent } from '../modals/update-channel/update-channel.component';
 
 
 @Component({
@@ -32,6 +33,16 @@ export class LayoutComponent implements OnInit, OnDestroy {
     let dialogRef = this.dialog.open(UpdateProfileComponent, {
       width: '50vw'
     });
+  }
+
+  openChannelSettings() {
+    let dialogRef = this.dialog.open(UpdateChannelComponent, {
+      width: '50vw'
+    })
+  }
+
+  yup() {
+    console.log('yup');
   }
 
   Logout()

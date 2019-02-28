@@ -116,8 +116,8 @@ export class ApiService {
       )
   }
 
-  updateChannel(channel: Channel) {
-    return this.http.put<Channel>(`${this.URL}/channel/${channel.id}`, channel, httpOptions)
+  updateChannel(channelId: number, channel: Channel) {
+    return this.http.put<Channel>(`${this.URL}/channel/${channelId}`, channel, httpOptions)
       .pipe(
         catchError(this.handleError('updateChannelFetch')),
         tap(user => user)

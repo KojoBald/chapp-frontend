@@ -1,15 +1,48 @@
 <div>
-    <h1 mat-dialog-title style="color: black">Update Channel Name</h1>
+    <h1 mat-dialog-title style="color: black">Update Channel</h1>
     <div mat-dialog-content>
       <form>
+        <mat-horizontal-stepper>
+            <mat-step label="Name">
                 <mat-form-field>
-                    <input matInput name="Name" placeholder="Channel Name" [(ngModel)]="Name" cdkFocusInitial>
+                    <input matInput name="Name" placeholder="Channel Name" [(ngModel)]="name" cdkFocusInitial>
                 </mat-form-field><br>
+              <button mat-raised-button matStepperNext type="button">Next</button>
+            </mat-step>
+            <mat-step label="Invite Users">
+              <!--Add/Remove Users-->
+                <mat-form-field>
+                    <mat-chip-list #chipList>
+                      <mat-chip *ngFor="let user of users" 
+                        [removable]="true" 
+                        [selectable]="true" 
+                        (removed)="removeUser(user)" >
+                        {{ user.username }}
+                        <mat-icon matChipRemove>cancel</mat-icon>
+                      </mat-chip>
+                      <input matInput name="Users" placeholder="Users" #huh
+                        [matChipInputFor]="chipList"
+                        (input)="searchForUsers($event)"
+                        [matAutocomplete]="auto">
+                    </mat-chip-list>
+                </mat-form-field>
+                <mat-autocomplete #auto="matAutocomplete" (optionSelected)="addUser($event)">
+                  <mat-option *ngFor="let user of userOptions" [value]="user">
+                    <span style="margin-right: 5px; font-weight: 600">{{ user.first + ' ' + user.last }}</span><span style="font-style: italic">@{{ user.username }}</span>
+                  </mat-option>
+                </mat-autocomplete>
+                <!-- <i style= 'font-size:12px;'>(Press Enter to add Member, 'X' to remove)</i> -->
+                <br>
+                <!--End-->
+                <button mat-raised-button matStepperPrevious type="button">Previous</button>
+            </mat-step> 
+        </mat-horizontal-stepper>
       </form>
     </div>
     <div mat-dialog-actions>
       <button mat-raised-button color="warn" (click)="dialogRef.close()">Cancel</button>
-      <button mat-raised-button color="primary" (click)="updateChannel()">Update</button>
+      <button mat-raised-button color="primary" (click)="updateChannel(name.value)">Ok</button>
+      <button mat-raised-button color="warn" (click)="deleteChannel()">Delete</button>
     </div>
   
     <div class="loading-spinner" *ngIf="loading">

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subscriber, Observable } from 'rxjs';
+import { Channel } from '../models/Channel';
 
 @Injectable({
   providedIn: 'root'
@@ -7,6 +8,8 @@ import { Subscriber, Observable } from 'rxjs';
 export class HeaderService {
   private _subscribers: Subscriber<String>[] = [];
   title: string;
+  channel: Channel | null;
+  isChannelAdmin: boolean = false;
   headerTitle: Observable<string>;
 
   constructor() { 
@@ -25,5 +28,12 @@ export class HeaderService {
   setHeaderTitle(title: string) {
     this.title = title;
     this._subscribers.forEach(subscriber => subscriber.next(title));
+  }
+
+  setChannel(channel: Channel | null) {
+    this.channel = channel;
+    if(channel !== null) {
+      this.isChannelAdmin = parseInt(sessionStorage.getItem('userId')) === channel.admin
+    }
   }
 }
