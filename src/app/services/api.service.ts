@@ -21,7 +21,7 @@ let httpOptions = {
   providedIn: 'root'
 })
 export class ApiService {
-  public URL: string = 'https://www.chapp-backend.herokuapp.com';
+  public URL: string = 'https://chapp-backend.herokuapp.com';
   public handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(operation, error);
