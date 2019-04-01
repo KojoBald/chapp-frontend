@@ -1,0 +1,56 @@
+#auth {
+    display: flex;
+    flex-direction: row;
+    transition: transform 350ms ease;
+
+    section {
+        width: 100vw;
+        height: 100vh;
+        flex: 0 0 auto;
+        position: relative;
+
+        div {
+            position: relative;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: inline-block;
+        }
+    }
+
+    button[mat-fab] {
+        position: absolute;
+        top: 2rem;
+    }
+
+    #toggle {
+        div {
+            display: inline-flex;
+            flex-direction: column;
+            justify-content: center;
+            align-content: center;
+            text-align: center;
+            padding: 20px;
+
+            button {
+                margin: 10px;
+            }
+        }
+    }
+
+    #sign-up {
+        button[mat-fab] {
+            right: 2rem;
+        }
+    }
+
+    #login {
+        button[mat-fab] {
+            left: 2rem;
+        }
+    }
+
+    &.toggle { transform: translateX(-100vw) }
+    &.sign-up { transform: translateX(0)  }
+    &.login { transform: translateX(-200vw) }
+}

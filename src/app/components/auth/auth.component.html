@@ -1,3 +1,23 @@
-<p>
-  auth works!
-</p>
+<div id="auth" [class]="whichForm">
+  <section id="sign-up">
+    <button mat-fab color="accent" (click)="whichForm = 'toggle'">
+      <mat-icon>keyboard_arrow_right</mat-icon>
+    </button>
+  </section>
+
+  <section id="toggle">
+    <div>
+      <h1>Chapp</h1>
+      <button mat-raised-button color="primary" (click)="whichForm = 'login'">Login</button>
+      <button mat-raised-button color="primary" (click)="whichForm = 'sign-up'">Sign Up</button>
+    </div>
+
+  </section>
+
+  <section id="login">
+    <button mat-fab color="accent" (click)="whichForm = 'toggle'">
+      <mat-icon>keyboard_arrow_left</mat-icon>
+    </button>
+  </section>
+</div>
+
