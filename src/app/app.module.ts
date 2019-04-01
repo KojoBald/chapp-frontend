@@ -6,13 +6,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MaterialModule } from './material.module';
 import { LayoutComponent } from './components/layout/layout.component';
-import { AuthComponent } from './components/auth/auth.component'
+import { AuthComponent } from './components/auth/auth.component';
+import { SidenavComponent } from './components/layout/sidenav/sidenav.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     LayoutComponent,
-    AuthComponent
+    AuthComponent,
+    SidenavComponent
   ],
   imports: [
     BrowserModule,

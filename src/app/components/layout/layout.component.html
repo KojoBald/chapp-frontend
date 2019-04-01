@@ -1,3 +1,13 @@
-<p>
-  layout works!
-</p>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav [mode]="(screen === 'mobile') ? 'over' : 'side'" [opened]="screen === 'web'" id="sidenav">
+    <app-sidenav></app-sidenav>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button mat-icon-button *ngIf="screen !== 'web'" (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
