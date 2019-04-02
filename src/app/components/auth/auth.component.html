@@ -3,21 +3,92 @@
     <button mat-fab color="accent" (click)="whichForm = 'toggle'">
       <mat-icon>keyboard_arrow_right</mat-icon>
     </button>
+    <div>
+      <form>
+        <mat-horizontal-stepper> 
+          <!-- TODO: add step controls so you can't advance until each step is completed -->
+          <mat-step label="personal info">
+            <div class="step-inputs">
+              <mat-form-field>
+                <input matInput type="text" placeholder="First Name">
+              </mat-form-field>
+              <mat-form-field>
+                  <input matInput type="text" placeholder="Last Name">
+              </mat-form-field>
+              <mat-form-field>
+                  <input matInput type="email" placeholder="Email">
+              </mat-form-field>
+            </div>
+            <div class="step-controls">
+              <button mat-button type="button" matStepperNext>Next</button>
+            </div>
+          </mat-step>
+          <mat-step label="account personalization">
+            <div class="step-inputs">
+              <mat-form-field>
+                <input matInput type="text" placeholder="Display Name">
+              </mat-form-field>
+              <mat-form-field>
+                  <input matInput type="text" placeholder="Avatar">
+              </mat-form-field>
+            </div>
+            <div class="step-controls">
+                <button mat-button type="button" matStepperPrevious>Previous</button>
+                <button mat-button type="button" matStepperNext>Next</button>
+            </div>
+          </mat-step>
+          <mat-step label="password">
+            <div class="step-inputs">
+              <mat-form-field>
+                <input matInput type="password" placeholder="Password">
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput type="password" placeholder="Confirm Password">
+              </mat-form-field>
+            </div>
+            <div class="step-controls">
+                <button mat-button type="submit">Submit</button>
+            </div>
+          </mat-step>
+        </mat-horizontal-stepper>
+      </form>
+    </div>
   </section>
 
   <section id="toggle">
     <div>
-      <h1>Chapp</h1>
-      <button mat-raised-button color="primary" (click)="whichForm = 'login'">Login</button>
-      <button mat-raised-button color="primary" (click)="whichForm = 'sign-up'">Sign Up</button>
+      <mat-card>
+        <mat-card-title>Chapp</mat-card-title>
+        <mat-card-content>
+          <p>
+            Chapp is a chat application built with Angular, Angular Material, Node.js, and socket.io. Because it is only meant as a portfolio piece, all new accounts and messages will be deleted after 24 hours to mitigate the need for moderation.
+          </p>
+        </mat-card-content>
+        <hr>
+        <mat-card-actions>
+          <button mat-raised-button color="primary" (click)="whichForm = 'sign-up'">Sign Up</button>
+          <button mat-raised-button color="primary" (click)="whichForm = 'login'">Login</button>
+        </mat-card-actions>
+      </mat-card>
     </div>
-
   </section>
 
   <section id="login">
     <button mat-fab color="accent" (click)="whichForm = 'toggle'">
       <mat-icon>keyboard_arrow_left</mat-icon>
     </button>
+    <div>
+      <form>
+        <h2>Login</h2>
+        <mat-form-field>
+          <input matInput type="text" placeholder="email">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput type="password" placeholder="password">
+        </mat-form-field>
+        <button mat-raised-button>Submit</button>
+      </form>
+    </div>
   </section>
 </div>
 

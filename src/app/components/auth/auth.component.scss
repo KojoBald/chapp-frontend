@@ -9,7 +9,7 @@
         flex: 0 0 auto;
         position: relative;
 
-        div {
+        & > div {
             position: relative;
             top: 50%;
             left: 50%;
@@ -20,33 +20,45 @@
 
     button[mat-fab] {
         position: absolute;
-        top: 2rem;
+        top: 4rem;
     }
 
     #toggle {
         div {
-            display: inline-flex;
-            flex-direction: column;
-            justify-content: center;
-            align-content: center;
-            text-align: center;
-            padding: 20px;
-
-            button {
-                margin: 10px;
-            }
+            width: 500px;
         }
     }
 
     #sign-up {
         button[mat-fab] {
-            right: 2rem;
+            right: 4rem;
+        }
+        & > div {
+            width: 80%;
+            height: 500px;
+            .step-inputs {
+                .mat-form-field {
+                    width: 250px;
+                }
+            }
         }
     }
 
     #login {
         button[mat-fab] {
-            left: 2rem;
+            left: 4rem;
+        }
+        & > div form {
+            display: inline-flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            h2 {
+                font-family: Roboto,"Helvetica Neue",sans-serif;
+            }
+            .mat-form-field {
+                width: 300px;
+            }
         }
     }
 
